@@ -1,0 +1,228 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+ font: normal 400 16px / 1.6 "-apple-system", "system-ui", "BlinkMacSystemFont", "Segoe UI", "Tahoma", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+.o-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.o-grid {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.o-grid__child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.app-header {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.app-logo {
+  font-family: 'Alfa Slab One', cursive;
+  color: #01d277;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  line-height: 0;
+}
+
+.app-logo span {
+  font-size: 1.4rem;
+}
+
+.app-navigation {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.app-navigation__btn {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 0.875em;
+  width: 5rem;
+  padding: 0.5rem 0;
+  text-align: center;
+  color: #01d277;
+  border: 2px solid #01d277;
+  transition: all 0.3s;
+}
+
+.app-navigation__btn:hover {
+  background-color: #01d277;
+  color: #ffffff;
+}
+
+.c-movie-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.c-movie-container__posters,
+.c-movie-container__details {
+  height: 100%;
+}
+
+.c-movie-container__posters {
+  width: 100%;
+  height: 35vh;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.c-movie-container__details {
+  position: relative;
+  width: 100%;
+  min-height: 65vh;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.c-poster-list,
+.c-details-list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.c-poster-list::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.74);
+          box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.74);
+}
+
+.c-poster-list__item,
+.c-details-list__item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.c-poster-list__item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-details-list__item {
+  padding: 1rem 2rem;
+  overflow-y: scroll;
+}
+
+.c-poster-list__item.is-active,
+.c-details-list__item.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.o-movie-release {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.o-movie-release span {
+  margin-right: 1rem;
+}
+
+.o-movie-storyline {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.o-movie-trailer {
+  margin-top: 5rem;
+  position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.o-movie-trailer__title {
+  font-size: 0.75em;
+  position: relative;
+  bottom: 5rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.o-movie-trailer__video {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .c-movie-container__posters { height: 100%; }
+
+  .c-movie-container__details {
+    height: 100%;
+  }
+
+  .c-details-list__item {
+    padding: 1rem 2rem;
+  }
+
+  .u-5of12\@lap { width: calc(100% / 12 * 5); }
+
+  .u-7of12\@lap { width: calc(100% / 12 * 7); }
+}
