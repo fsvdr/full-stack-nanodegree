@@ -1,0 +1,168 @@
+/**
+ * ==============================================
+ * Variables
+ * ==============================================
+ *
+ * This file contains all settings variables that can be modified
+ * accordingly to the projects needs.
+ *
+ * CONTENTS
+ * ----------------
+ * 1. Typography
+ * 2. Responsive
+ * 3. Grid
+ */
+
+/**
+ * =============================================
+ * #TYPOGRAPHY
+ * =============================================
+ */
+
+
+
+
+
+/**
+ * Settings for font styling
+ * Used in 'body' selector to apply to the whole document
+ *
+ * NOT EXTENDABLE: If new values are added these won't be applied to the 'body'
+ * selector
+ *
+ * @access public
+ * @type Map
+ */
+$base-font-settings: (
+  'font-style': normal,
+  'font-weight': 400,
+  'font-size': 16px,
+  'line-height': 1.6,
+  'font-family': map-get($font-families, 'default'),
+) !default;
+
+
+
+
+
+/**
+ * Typography sizes used across the project
+ * Predefined sizes corresponding to the project design guideline
+ *
+ * NOT EXTENDABLE: If new values are added there won't be classes binded to
+ * them, these need to be created manually in TRUMPS
+ *
+ * @access private
+ * @type Map
+ */
+$typography-sizes: (
+  't3': 20px,
+  't2': 18px,
+  't1': 16px,
+  's1': 14px,
+  's2': 12px
+);
+
+
+
+
+
+/**
+ * Base duration to use with animations
+ *
+ * @access public
+ * @type Number
+ */
+$base-animation-duration: 0.3s;
+
+
+
+
+
+/**
+ * =============================================
+ * #RESPONSIVE
+ * =============================================
+ */
+
+
+
+
+/**
+* Common breakpoints definition.
+*
+* Think of these as a bank for breakpoints you may want to use.
+*
+* EXTENDABLE: You can add or remove values to this map.
+*
+* @access private
+* @type Map
+*/
+$fendy-breakpoints-reference: (
+  'mob-m': (min-width: 321px),    // Ex. iPhone 7
+  'mob-l': (min-width: 376px),    // Ex. iPhone 7 Plus
+  'tab': (min-width: 601px),      // Ex. iPad
+  'lap': (min-width: 769px),      // Ex. iPad landscape
+  'lap-m': (min-width: 1025px),   // Ex. 13' MacBook
+  'lap-l': (min-width: 1281px),   // Ex. 15' MacBook
+  'desk': (min-width: 1601px),    // Ex. 21.5' iMac
+  'desk-m': (min-width: 1921px),  // Ex. 27' iMac
+  '4k': (min-width: 2561px),      // Ex. 4K iMac
+  '5k': (min-width: 4097px)       // Ex. 5K iMac
+) !default;
+
+
+
+
+
+/**
+* Defines key breakpoints used for responsive utilities.
+*
+* These will create the @<breakpoint> utility for use across the project
+* for example, they will be used for the width utility that serves the
+* grid object.
+*
+* DEPENDENCY: Each value is related to a key in $fendy-breakpoints-reference
+*
+* EXTENDABLE: You can add or remove values to this map.
+*
+* @access private
+* @type Map
+*/
+$fendy-breakpoints: (
+  tab: 'tab',
+  lap: 'lap'
+) !default;
+
+
+
+
+
+/**
+ * Defines base media type to use in case none is provided to media queries.
+ *
+ * @access private
+ * @type String | List
+ */
+$fendy-base-media-query-type: screen !default;
+
+
+
+
+
+/**
+ * =============================================
+ * #GRID
+ * =============================================
+ */
+
+/**
+ * Number of columns to use for the grid system.
+ *
+ * This will define the width utility classes that serve as modifiers
+ * for the grid child element.
+ *
+ * @access private
+ * @type Number
+ */
+$fendy-grid-column-count: 12 !default;

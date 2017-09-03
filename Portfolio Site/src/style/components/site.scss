@@ -1,0 +1,50 @@
+.c-site {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.c-site__hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('../assets/background.png') 50% 50% no-repeat;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../assets/confetti.svg') 0 100% no-repeat;
+    background-size: cover;
+    z-index: 1;
+    @include respond-to('lap') {
+      background-size: contain;
+    }
+  }
+}
+
+.c-hero__nav {
+  padding: 1rem 2rem !important;
+  z-index: 2;
+}
+
+.c-hero__copy {
+  height: 60vh;
+  z-index: 2;
+}
+
+.o-hero-title {
+  color: #FFFFFF;
+  font-size: calc-em(64px);
+  padding-right: 1rem;
+}
+
+.o-hero-text {
+  color: #FFFFFF;
+  padding-left: 1rem;
+}

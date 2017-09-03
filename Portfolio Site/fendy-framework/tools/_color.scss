@@ -1,0 +1,76 @@
+/**
+ * ==============================================
+ * Color mixin and functions
+ * ==============================================
+ *
+ * This file contains mixins and functions useful for color operations
+ */
+
+/**
+ * By default Fendy Framework uses both the $color-scheme and
+ * $color-brand-scheme maps as color source.
+ * You can change this to whatever source you want to be able to
+ * use the get-color function.
+ *
+ * @access private
+ * @require $color-scheme
+ * @require $color-brand-scheme
+ * @type Map
+ */
+$fendy-color-source: null;
+
+@if $color-scheme == null or $color-brand-scheme == null {
+  @error
+    'Fendy Framework\'s default color source map cannot be created.\
+    Please make sure to have the color shceme and color brand scheme\
+    maps defined or use your own map.';
+}
+
+@else {
+  $fendy-color-source: map-merge($color-scheme, $color-brand-scheme);
+}
+
+
+
+
+
+/**
+ * Darken color for hover effect
+ * Given a base color, returns the same color with the lightness
+ * decreased by the default darkening amount
+ *
+ * @param  Color $base The color to darken
+ * @access public
+ * @return Color       The base color darkened
+ */
+@function get-hover-color($base-color) {
+  $hover-darkening-amount: 20% !default;
+  @return darken($base-color, $hover-darkening-amount);
+}
+
+
+
+
+/**
+ * Returns a color expected to be present in the color source.
+ *
+ * @param $key: string.  Key of requested value
+ * @access public
+ * @require $fendy-color-source
+ * @return Color
+ */
+@function get-color($key) {
+
+  /**
+   * Check whether there is a color source defined
+   */
+  @if $fendy-color-source == null {
+    @error
+      'get-color() requires a color source to work.\
+      Please be sure to define one or default to the provided source.';
+    @return false;
+  }
+  @else {
+    @return map-get($fendy-color-source, $key);
+  }
+}

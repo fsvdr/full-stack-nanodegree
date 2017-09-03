@@ -1,0 +1,38 @@
+/**
+ * ==============================================
+ * Typography utilities
+ * ==============================================
+ *
+ * This file contains utility classes for typography font sizes.
+ *
+ * @require Map       $typography-sizes
+ * @require Function  calc-em()
+ */
+
+/**
+ * Creates typography font size utility classes for every key defined in the
+ * typography sizes map.
+ */
+@mixin font-sizes-utilities() {
+
+  /**
+   * Check if the typography sizes map is defined and populated.
+   */
+  @if $typography-sizes == null {
+    @error
+      'typography-sizes-utilities() requires the typography-sizes map in order\
+      to create the typography font size utility classes. Please make sure to\
+      include it in <settings/_variables.scss>';
+  }
+  @else {
+    @each $key, $value in $typography-sizes {
+      .#{$key} { font-size: calc-em($value); }
+    }
+  }
+}
+
+
+
+
+
+@include font-sizes-utilities();

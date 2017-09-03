@@ -1,0 +1,69 @@
+/**
+ * ==============================================
+ * Display utilities
+ * ==============================================
+ *
+ * This file contains utility classes for displaying content.
+ */
+
+/**
+ * Display types
+ */
+
+.u-block {
+  display: block;
+  @include responsive-states() { display: block; }
+}
+
+.u-inline {
+  display: inline;
+  @include responsive-states() { display: inline; }
+}
+
+.u-inline-block {
+  display: inline-block;
+  @include responsive-states() { display: inline-block; }
+}
+
+
+
+
+
+/**
+ * Displaying centered blocks
+ */
+
+.u-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-center--vertical {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+
+
+/**
+ * Showing/Hiding things
+ */
+
+.u-hidden {
+  display: none;
+  @include responsive-states() { display: none; }
+}
+
+.u-visible {
+  visibility: visible;
+  @include responsive-states() { visibility: visible; }
+}
+
+.u-invisible {
+  visibility: hidden;
+  @include responsive-states() { visibility: hidden; }
+}

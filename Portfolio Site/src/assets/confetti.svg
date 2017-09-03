@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1215px" height="470px" viewBox="0 0 1215 470" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>confetti</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-25.000000, -257.000000)">
+            <g id="bkg">
+                <g id="confetti" transform="translate(15.000000, 260.000000)">
+                    <g id="Group-3" transform="translate(1069.000000, 0.000000)">
+                        <rect id="Rectangle-2" stroke="#EF4A27" stroke-width="3" transform="translate(6.594302, 239.594302) rotate(6.000000) translate(-6.594302, -239.594302) " x="2.09430215" y="235.094302" width="9" height="9"></rect>
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(1151.254000, 348.232052) rotate(53.000000) translate(-1151.254000, -348.232052) translate(1083.754000, 224.732052)">
+                        <rect id="Rectangle-2" stroke="#EF4A27" stroke-width="3" transform="translate(6.594302, 239.594302) rotate(6.000000) translate(-6.594302, -239.594302) " x="2.09430215" y="235.094302" width="9" height="9"></rect>
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(291.584950, 371.232052) rotate(53.000000) translate(-291.584950, -371.232052) translate(224.084950, 247.732052)">
+                        <rect id="Rectangle-2" stroke="#EF4A27" stroke-width="3" transform="translate(6.594302, 239.594302) rotate(6.000000) translate(-6.594302, -239.594302) " x="2.09430215" y="235.094302" width="9" height="9"></rect>
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(233.500000, 165.500000) rotate(-57.000000) translate(-233.500000, -165.500000) translate(166.000000, 42.000000)">
+                        <rect id="Rectangle-2" stroke="#EF4A27" stroke-width="3" transform="translate(6.594302, 239.594302) rotate(6.000000) translate(-6.594302, -239.594302) " x="2.09430215" y="235.094302" width="9" height="9"></rect>
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(1136.338950, 343.873184) rotate(-57.000000) translate(-1136.338950, -343.873184) translate(1068.838950, 220.373184)">
+                        <rect id="Rectangle-2" stroke="#EF4A27" stroke-width="3" transform="translate(6.594302, 239.594302) rotate(6.000000) translate(-6.594302, -239.594302) " x="2.09430215" y="235.094302" width="9" height="9"></rect>
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(125.338950, 370.873184) rotate(-34.000000) translate(-125.338950, -370.873184) translate(57.838950, 247.373184)">
+                        <circle id="Oval" stroke="#1C47E3" stroke-width="5" cx="19" cy="6" r="6"></circle>
+                        <polygon id="Triangle" stroke="#FECE28" stroke-width="3" transform="translate(127.776647, 129.776647) rotate(-8.000000) translate(-127.776647, -129.776647) " points="127.776647 123.776647 133.776647 135.776647 121.776647 135.776647"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,52 @@
+/**
+ * ==============================================
+ * Wrapper
+ * ==============================================
+ *
+ * This file contains styles for wrapping content.
+ *
+ * The wrapper object serves as a container to keep content in-flow with the
+ * layout.
+ */
+
+$fendy-wrapper-width: 90% !default;
+
+$fendy-wrapper-max-width: 1280px !default;
+
+
+
+
+
+/**
+ * Creates a mobile-first wrapper that becomes static at the max-width.
+ *
+ * Includes responsive classes that limt the size of the wrapper at breakpoints.
+ */
+.o-wrapper {
+  width: $fendy-wrapper-width;
+  max-width: $fendy-wrapper-max-width;
+  margin: 0 auto;
+  @include responsive-states() {
+    max-width: $fendy-wrapper-max-width;
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
+/**
+ * Creates a modification of the wrapper object that occupies the whole
+ * available width.
+ *
+ * Includes responsive classes that limt the size of the wrapper at breakpoints.
+ */
+.o-wrapper--full {
+  width: 100%;
+  margin: 0;
+  @include responsive-states() {
+    width: 100%;
+    margin: 0;
+  }
+}

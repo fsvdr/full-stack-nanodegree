@@ -1,0 +1,41 @@
+/**
+ * ==============================================
+ * Fonts mixins and functions
+ * ==============================================
+ *
+ * This file contains mixins and functions useful for
+ * fonts operations
+ */
+
+/**
+ * Returns font family expected to be present in the fonts map.
+ *
+ * @access public
+ * @require $font-families
+ * @return String | List
+ */
+@function get-font($key) {
+
+  /**
+   * Check if the font families map is defined and populated.
+   */
+  @if $font-families == null {
+    @error
+      'get-font() requires the font-families map in order to\
+      return a value. Please make sure to include it in\
+      <settings/_fonts.scss>';
+  }
+  @else {
+
+    /**
+     * Check if the provides key exists in the map
+     */
+    @if map-has-key($font-families, $key) {
+      @return map-get($font-families, $key);
+    }
+    @else {
+      @error
+        'The #{$key} key is not defined in the font-familes map.';
+    }
+  }
+}

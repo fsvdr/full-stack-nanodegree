@@ -1,0 +1,42 @@
+.c-portfolio {
+  position: relative;
+  top: 100vh;
+  z-index: 5;
+  overflow-x: scroll;
+  transform: translateY(-100%);
+}
+
+.c-portfolio__list {
+  position: relative;
+  width: 100%;
+  top: 25rem;
+  padding-bottom: 4%;
+  @include respond-to('tab') {
+    width: auto;
+    top: initial;
+    left: 20%;
+    flex-wrap: nowrap;
+  }
+}
+
+.c-portfolio__item {
+  width: 90%;
+  padding: 0.5rem;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  margin: 0.5rem auto;
+  @include respond-to('tab') {
+    width: 22em;
+    margin: 0 1rem;
+  }
+}
+
+.o-item-photo {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.o-item-title {
+  padding: 0.5rem 1rem;
+  margin: 0;
+}

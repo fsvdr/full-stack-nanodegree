@@ -1,0 +1,48 @@
+/**
+ * ==============================================
+ * Base Styiling
+ * ==============================================
+ *
+ * This file contains base styling for the whole document
+ */
+
+/**
+ * Define flexible box sizing
+ * More on http://bit.ly/1A91I0J
+ */
+html {
+  box-sizing: border-box;
+}
+
+/* stylelint-disable selector-max-universal */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+/* stylelint-enable */
+
+
+
+
+
+/**
+* Presets for body
+*
+* 1) Emphasize legibility over rendering speed and geometric precision
+* 2) Smooth the font on the level of the pixel
+* 3) Render text with grayscale antialiasing
+*/
+body {
+ /* stylelint-disable */
+ font:
+   map-get($base-font-settings, 'font-style')
+   map-get($base-font-settings, 'font-weight')
+   map-get($base-font-settings, 'font-size') #{'/'}
+   map-get($base-font-settings, 'line-height')
+   map-get($base-font-settings, 'font-family');
+   /* stylelint-enable */
+  color: $body-color or #000000;
+  text-rendering: optimizeLegibility;     /* [1] */
+  -webkit-font-smoothing: antialiased;    /* [2] */
+  -moz-osx-font-smoothing: grayscale;     /* [3] */
+  font-smoothing: antialiased;            /* stylelint-disable */
+}

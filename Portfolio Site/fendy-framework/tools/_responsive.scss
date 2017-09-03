@@ -1,0 +1,135 @@
+/**
+ * ==============================================
+ * Responsive Tools
+ * ==============================================
+ *
+ * This file contains mixins and functions useful for handling breakpoints and
+ * media queries for responsive functionality.
+ *
+ * DEPENDENCIES:
+ * $fendy-breakpoints-reference       {map}           from 'settings/options'
+ * $fendy-base-media-query-type       {string|list}   from 'settings/options'
+ * $fendy-breakpoints                 {map}           from 'settings/options'
+ */
+
+/**
+ * Lookup for a given breakpoint in the Fendy breakpoints reference variable.
+ *
+ * @param String  $key  -   The name of the breakpoint to llok for.
+ * @access public
+ * @require $fendy-breakpoints-reference
+ * @return Number | List
+ */
+@function get-breakpoint($key) {
+
+  /**
+   * Check if the breakpoints reference is defined and populated.
+   */
+  @if $fendy-breakpoints-reference == null {
+    @error
+      'There is no breakpoint reference in the project.\
+      Check for the $fendy-breakpoints-reference map inside\
+      settings/_variables.scss';
+  }
+
+  /**
+   * Check if breakpoints reference has the given key defined.
+   */
+  @if map-has-key($fendy-breakpoints-reference, $key) {
+    @return map-get($fendy-breakpoints-reference, $key);
+  }
+  @else {
+    @error 'The key #{$key} is not define in $fendy-breakpoints-reference.';
+  }
+}
+
+
+
+
+
+/**
+ * Handle media queries content blocks.
+ *
+ * The content block included in the declaration will be scoped to the
+ * constructed media query.
+ *
+ * @param String  $breakpoint   -   Name of the breakpoint to respond to
+ * @param List    $media-type   -   Media types to respond to
+ * @require $fendy-base-media-query-type
+ * @require $fendy-breakpoints-reference
+ * @content List of rules to be applied at breakpoint
+ */
+@mixin respond-to($breakpoint, $media-type: $fendy-base-media-query-type) {
+
+  /**
+   * Check if breakpoints are provided.
+   *
+   * There may be cases where you only want to target media types, not a
+   * specific breakpoint for example, when using the print media query.
+   */
+  @if $breakpoint == null {
+    @media #{$media-type} {
+      @content;
+    }
+  }
+  @else {
+
+    /**
+     * Check if the Fendy breakpoint reference has the given breakpoint defined.
+     */
+    @if map-has-key($fendy-breakpoints-reference, $breakpoint) {
+      @media #{$media-type} and #{get-breakpoint($breakpoint)} {
+        @content;
+      }
+    }
+    @else {
+      @error
+        'The breakpoint #{$breakpoint} is not defined in\
+         $fendy-breakpoints-reference';
+    }
+  }
+}
+
+
+
+
+
+/**
+ * Generates responsive classes for a given content block.
+ *
+ * Handles the respetitive task of declaring responsive classes for the same
+ * set of rules. Creactes a responsive class for each breakpoint defined in
+ * $fendy-breakpoints
+ *
+ * @param List | String  $media-type    -   Media queries to create
+ *                                          resposive classes for
+ * @require $fendy-base-media-query-type
+ * @require $fendy-breakpoints
+ * @content List of rules to be applied at each media query breakpoint
+ */
+@mixin responsive-states($media-type: $fendy-base-media-query-type) {
+
+  /**
+   * Check if the breakpoint map is defined
+   */
+  @if $fendy-breakpoints {
+    @each $name, $key in $fendy-breakpoints {
+
+      /**
+       * For every breakpoint, define responsive class for given rules
+       * (content) inside it's corresponding media query.
+       */
+      @include respond-to(#{$name}) {
+
+        &\@#{$name} {
+          @content;
+        }
+      }
+    }
+  }
+  @else {
+    @error
+      'The $fendy-breakpoints map couldn\'t be found.\
+      Be sure to define it in settings/_variables.scss.';
+  }
+}

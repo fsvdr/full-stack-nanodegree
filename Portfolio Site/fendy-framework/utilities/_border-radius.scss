@@ -1,0 +1,29 @@
+/**
+ * ==============================================
+ * Border radius utility classes
+ * ==============================================
+ */
+
+/**
+ * Settings for border radius.
+ *
+ * Defines a map with each value of border radius to use
+ * across the project
+ *
+ * @type Map
+ */
+$radius-settings: (
+  's': 2px,
+  'm': 0.5rem,
+  'l': 2rem,
+  'c': 50%
+);
+
+@mixin border-radius-classes() {
+  @each $name, $value in $radius-settings {
+
+    .u-radius-#{$name} { border-radius: $value; }
+  }
+}
+
+@include border-radius-classes();

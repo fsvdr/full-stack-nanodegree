@@ -1,0 +1,14 @@
+.o-logo {
+  color: #FFFFFF;
+  font-size: font-size('t3');
+  font-weight: 900;
+}
+
+.o-link {
+  color: #FFFFFF;
+  font-size: font-size('t3');
+  font-weight: 900;
+
+  &:hover { color: #FFFFFF; }
+  &:visited { color: #FFFFFF; }
+}

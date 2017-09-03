@@ -1,0 +1,141 @@
+@charset 'UTF-8';
+
+/**
+ * ==============================================
+ * Fendy Framework
+ * Version 1.0.0
+ * https://github.com/Fendy/fendy-framework
+ * Licensed under MIT
+ * ==============================================
+ *
+ * Developed by Luis Fernando Saavedra Meza
+ * Copyright 2017
+ *
+ * Welcome to Fendy folks, this file is where everything comes toegether and
+ * more importantly, this is the file that you'll want to output as a nice,
+ * minified css file to add in your HTML. But before that, there's some info
+ * you might need to understand about how Fendy works like it's architecture,
+ * naming convention and other things so if you haven't checked thouse out or
+ * want to know more about it I recommend you to take a look to the wiki.
+ *
+ *
+ * CONTENTS
+ * ----------------
+ * 1. Settings    -> Variables, fonts...
+ * 2. Tools       -> Functions, mixins...
+ * 3. Generic     -> Resets, vendors...
+ * 4. Elements    -> HTML elements...
+ * 5. Objects     -> Common patterns...
+ * 6. Components  -> UI components...
+ * 7. Utilities   -> Utility classes, helpers...
+ */
+
+/**
+ *  =============================================
+ *  #SETTINGS
+ *  =============================================
+ */
+
+@import
+  '../../fendy-framework/settings/colors',
+  '../../fendy-framework/settings/fonts',
+  'settings/fonts',
+  '../../fendy-framework/settings/variables';
+
+
+
+
+
+/**
+*  =============================================
+*  #TOOLS
+*  =============================================
+*/
+
+@import
+  '../../fendy-framework/tools/color',
+  '../../fendy-framework/tools/fonts',
+  '../../fendy-framework/tools/responsive',
+  '../../fendy-framework/tools/typography';
+
+
+
+
+
+/**
+*  ==============================================
+*  #GENERIC
+*  ==============================================
+*/
+
+@import
+  '../../node_modules/normalize.css/normalize',
+  '../../fendy-framework/generic/reset',
+  '../../fendy-framework/generic/base';
+
+
+
+
+
+/**
+*  ==============================================
+*  #Elements
+*  ==============================================
+*/
+
+@import
+  '../../fendy-framework/elements/forms',
+  '../../fendy-framework/elements/headers',
+  '../../fendy-framework/elements/table',
+  '../../fendy-framework/elements/text-content',
+  '../../fendy-framework/elements/text-level-semantics';
+
+
+
+
+
+/**
+ *  =============================================
+ *  #OBJECTS
+ *  =============================================
+ */
+
+
+
+
+
+@import
+  '../../fendy-framework/objects/grid',
+  '../../fendy-framework/objects/wrapper',
+  'objects/brand';
+
+/**
+*  =============================================
+*  #COMPONENTS
+*  =============================================
+*/
+
+@import
+  'components/site',
+  'components/portfolio';
+
+
+
+
+
+/**
+ *  =============================================
+ *  #TRUMPS
+ *  =============================================
+ */
+
+@import
+  '../../fendy-framework/utilities/border-radius',
+  '../../fendy-framework/utilities/color',
+  '../../fendy-framework/utilities/display',
+  '../../fendy-framework/utilities/fonts',
+  '../../fendy-framework/utilities/padding',
+  '../../fendy-framework/utilities/text',
+  '../../fendy-framework/utilities/typography',
+  '../../fendy-framework/utilities/vertical-align',
+  '../../fendy-framework/utilities/widths';

@@ -1,0 +1,195 @@
+/**
+ * ==============================================
+ * Text Content Styling
+ * ==============================================
+ *
+ * This file contains styling for text content elements
+ * Mozilla defines text content as elements to organize blocks or sections of
+ * content. See more at:
+ * (https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Text_content)
+ *
+ * CONTENTS
+ * ----------------
+ * 1. Paragraphs
+ * 2. Bloquotes
+ * 3. Lists (dl, ol, ul)
+ * 4. Figure and figcaption
+ * 5. Horizontal rule
+ * 6. Preformatted text
+ *
+ * @require Function font-size()
+ */
+
+/**
+* Margin bottom for paragraphs
+*
+* @type Number
+*/
+$paragraph-base-margin-bottom: 1rem !default;
+
+
+
+
+
+/**
+ * Default background color for preformatted text and/or code
+ *
+ * @type Color
+ */
+$code-bkg-color: get-color('grey') or #EFEFEF !default;
+
+
+
+
+
+/**
+ * Sets default style for paragraphs
+ */
+p {
+  font-size: inherit;
+  margin-bottom: $paragraph-base-margin-bottom;
+}
+
+
+
+
+
+/**
+ * Sets default style for bloquotes
+ * In order to keep the element from modifying the space around it and to
+ * avoid conflicting styles with users layout the margin isn't modify and
+ * instead the user agent rules for it are preserved
+ */
+blockquote {
+  border-left: 5px solid ($accent-color or #000000);
+  padding: 0.5rem 2rem;
+
+  p {
+    font-size: font-size('t1');
+    font-weight: 200;
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for definition lists
+ *
+ * 1) Remove list item marker
+ * 2) Give some space between dt dd pairs
+ */
+dl {
+  list-style-type: none;  /* [1] */
+
+  dt {
+    font-weight: 700;
+
+    &:not(:first-child) {
+      margin-top: 1rem; /* [2] */
+    }
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for ordered lists
+ *
+ * 1) By default ordered list item markers are numbers
+ * 2) Set indentation for nested lists
+ * 3) Change marker of second level nested list to upper latin (A, B, ...)
+ * 4) Change marker of third level nested list to lowe latin (a, b, ...)
+ */
+ol {
+  list-style-type: decimal; /* [1] */
+
+  & > ol {
+    padding-left: 1.5em; /* [2] */
+    list-style-type: upper-latin; /* [3] */
+
+    & > ol {
+      list-style-type: lower-latin; /* [4] */
+    }
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for unordered lists
+ *
+ * 1) Set indentation for nested lists
+ * 2) Change marker of second level nested list to upper latin (A, B, ...)
+ * 3) Change marker of third level nested list to lowe latin (a, b, ...)
+ */
+ul {
+  list-style-type: disc;
+
+  & > ul {
+    padding-left: 1.5em; /* [1] */
+    list-style-type: circle; /* [2] */
+
+    & > ul {
+      list-style-type: square; /* [3] */
+    }
+  }
+}
+
+
+
+
+
+/**
+ * Sets default styling for figure and figure caption elements
+ * By default figure occupies the whole width of it's container and
+ * is only provided with a margin bottom to separate content
+ */
+figure {
+  margin-bottom: 1em;
+
+  figcaption {
+    font-style: italic;
+    font-weight: 100;
+    font-size: font-size('s1');
+    text-align: center;
+  }
+}
+
+
+
+
+
+/**
+ * Sets default styling for horizontal rule
+ */
+hr {
+  border-color: rgba(0, 0, 0, 0.12);
+  margin: 1em 0;
+}
+
+
+
+
+
+/**
+ * Sets default styling for preformatted text
+ * By default occupies the whole with of it's container and
+ * uses the base default color as background
+ */
+pre {
+  display: block;
+  padding: 1.2rem;
+  margin-bottom: 1em;
+  font-size: font-size('s1');
+  background-color: $code-bkg-color;
+}
