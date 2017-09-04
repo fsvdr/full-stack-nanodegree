@@ -1004,273 +1004,6 @@ body {
 */
 /**
  * ==============================================
- * Form related elements styling
- * ==============================================
- *
- * This file contains styling for form elements
- * These styles are ment to replace the default user agent styles not to
- * provide a design solution. Think of these as a base on which to build
- * your design implementation.
- *
- * CONTENTS:
- * 1. Variables
- * 2. Button
- * 3. Input and Textarea
- * 4. Label
- * 5. Meter
- * 6. Progress
- * 7. Select
- * 8. Fieldset
- */
-/**
- * ==============================================
- * #VARIABLES
- * ==============================================
- */
-/**
- * Base border width use for form fields
- *
- * @type Number
- */
-/**
- * Base color set as border and/or box shadow for form fields
- *
- * @type Color
- */
-/**
- * Minimum recommended width for tapable targets
- * In order to be accessible in touch devices, some elements that the user
- * will interact with need to be of a a minimum size
- *
- * @type Number
- */
-/**
- * Minimum recommended width for tapable targets
- * In order to be accessible in touch devices, some elements that the user
- * will interact with need to be of a a minimum size
- *
- * @type Number
- */
-/**
- * Unfortunatly on the meter element setting appearance to none will remove
- * the element entirely from chrome showing the actual contents of the tags
- * (fallbacks) but setting it to meter will reset the user agent styles on
- * safari so this an entirely subjective matter on what browser should
- * give more importance to the element itself.
- *
- * In fendy by default the meter element has the appearance property set to
- * none so you should set this to 'chrome' if you want to give preference
- * to it. Set it to 'safari' (or whatever else you want) to give it meter
- * appearance.
- *
- * @type String
- */
-/**
- * Color palette for the meter element.
- *
- * bar          Used for the background of the element.
- * optimum      Used when the value falls inside the low-high range.
- * suboptimum   Used when the value falls outside the low-high range.
- * less-good    Used when the value and the optimim attributes fall outside
- * the low-high range but in opposite zones.
- *
- * @type Map
- */
-/**
- * Color palette for the progress element.
- *
- * bar          Used for the background of the element.
- * value        Used for the value inside the bar.
- * @type Map
- */
-/**
- * ==============================================
- * #BUTTON
- * ==============================================
- */
-/**
- * Gives buttons some border and padding
- */
-button {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  min-width: 44px;
-  min-height: auto;
-}
-
-/**
- * ==============================================
- * #INPUT
- * ==============================================
- */
-/* stylelint-disable selector-no-qualifying-type */
-input[type='text'], input[type='password'],
-input[type='date'], input[type='datetime-local'],
-input[type='email'], input[type='file'],
-input[type='month'], input[type='number'],
-input[type='search'], input[type='tel'],
-input[type='time'], input[type='url'],
-input[type='week'],
-textarea {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  min-width: 44px;
-}
-
-/* stylelint-enable */
-/**
- * ==============================================
- * #LABEL
- * ==============================================
- */
-label {
-  cursor: pointer;
-}
-
-/**
- * ==============================================
- * #METER
- * ==============================================
- */
-/**
- * Sets base style for the meter element across webkit and moz browsers
- * To learn more about styling the meter element you can refer to:
- * https://css-tricks.com/html5-meter-element/
- */
-meter {
-  -webkit-appearance: meter;
-     -moz-appearance: meter;
-          appearance: meter;
-  height: 0.3rem;
-}
-
-meter::-webkit-meter-bar {
-  background: none;
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-meter::-webkit-meter-optimum-value {
-  background: none;
-  background-color: #4FD474;
-}
-
-meter::-webkit-meter-suboptimum-value {
-  background: none;
-  background-color: #FBB523;
-}
-
-meter::-webkit-meter-even-less-good-value {
-  background: none;
-  background-color: #FC483C;
-}
-
-meter::-moz-meter-bar {
-  background: none;
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-meter::-moz-meter-optimum {
-  background: none;
-  background-color: #4FD474;
-}
-
-meter::-moz-meter-sub-optimum {
-  background: none;
-  background-color: #FBB523;
-}
-
-meter::-moz-meter-sub-sub-optimum {
-  background: none;
-  background-color: #FC483C;
-}
-
-/**
- * ==============================================
- * #PROGRESS
- * ==============================================
- */
-/**
- * Sets base style for the progress element across webkit and moz browsers.
- * To learn more about styling the progress element you can refer to:
- * https://css-tricks.com/html5-progress-element/
- */
-progress {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: none;
-  height: 0.3em;
-}
-
-progress::-webkit-progress-bar {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-progress::-webkit-progress-value {
-  background-color: #4FD474;
-}
-
-progress::-moz-progress-bar {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-progress::-moz-progress-value {
-  background-color: #4FD474;
-}
-
-/**
- * ==============================================
- * #SELECT
- * ==============================================
- */
-/**
- * Sets base style for the select element.
- *
- * 1) Defines a chevron on the right side of the element
- */
-select {
-  /* stylelint-disable-next-line */
-  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTggMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQXJ0Ym9hcmQtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzOC4wMDAwMDAsIC00MS4wMDAwMDApIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPHBhdGggZD0iTTE0OS40NDQ2MTgsNDkuODM2ODU0NiBMMTU1LjgwNjU5OSw0My40NzQ4NzM3IEwxNTMuNjg1Mjc4LDQxLjM1MzU1MzQgTDE0Ny4zMjMyOTgsNDcuNzE1NTM0MiBMMTQwLjk2MTMxNyw0MS4zNTM1NTM0IEwxMzguODM5OTk2LDQzLjQ3NDg3MzcgTDE0NS4yMDE5NzcsNDkuODM2ODU0NiBMMTQ1LjE5OTk5Nyw0OS44Mzg4MzQ4IEwxNDcuMzIxMzE3LDUxLjk2MDE1NTEgTDE0Ny4zMjMyOTgsNTEuOTU4MTc0OSBMMTQ3LjMyNTI3OCw1MS45NjAxNTUxIEwxNDkuNDQ2NTk4LDQ5LjgzODgzNDggTDE0OS40NDQ2MTgsNDkuODM2ODU0NiBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==") 90% 55%/14px 10px no-repeat;
-  /* [1] */
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0;
-  padding-right: 2em;
-}
-
-/**
- * ==============================================
- * #FIELDSET
- * ==============================================
- */
-fieldset {
-  width: 100%;
-  height: auto;
-  padding: 1rem 1rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-fieldset legend {
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-
-/* stylelint-disable-next-line */
-input[type='file']::-webkit-file-upload-button {
-  outline: 0;
-  border: 0;
-  opacity: 0;
-  width: 10%;
-  visibility: hidden;
-}
-
-/* stylelint-disable-next-line */
-input[type='file'] {
-  padding-top: 3px;
-  /* stylelint-disable-next-line */
-  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMjAgMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iSWNvbm9ncmFwaHkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9ImNsaXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjAwMDAwMCwgLTMuMDAwMDAwKSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEuMiI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMjUzMDQ4LCAxMi4yNTMwNDgpIHJvdGF0ZSg0NS4wMDAwMDApIHRyYW5zbGF0ZSgtMTIuMjUzMDQ4LCAtMTIuMjUzMDQ4KSB0cmFuc2xhdGUoOC4yNTMwNDgsIDEuNzUzMDQ4KSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMS4yLDQuNDQyMzA3NjkgTDguMzYxNTM4NDYsNC40NDIzMDc2OSBMOC4zNjE1Mzg0Niw0LjQ0MjMwNzY5IEMxMC41OTE5MTkyLDQuNDQyMzA3NjkgMTIuNCw2LjI1MDM4ODUxIDEyLjQsOC40ODA3NjkyMyBMMTIuNCw4LjQ4MDc2OTIzIEwxMi40LDguNDgwNzY5MjMgQzEyLjQsMTAuNzExMTUgMTAuNTkxOTE5MiwxMi41MTkyMzA4IDguMzYxNTM4NDYsMTIuNTE5MjMwOCBMLTQuNCwxMi41MTkyMzA4IiBpZD0iUmVjdGFuZ2xlLTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQuMDAwMDAwLCA4LjQ4MDc2OSkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtNC4wMDAwMDAsIC04LjQ4MDc2OSkgIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNLTIuNiwxMi4zMTczMDc3IEw1LjU3MTE1Mzg1LDEyLjMxNzMwNzcgTDUuNTcxMTUzODUsMTIuMzE3MzA3NyBDNy4yNDM5MzkzOSwxMi4zMTczMDc3IDguNiwxMy42NzMzNjgzIDguNiwxNS4zNDYxNTM4IEw4LjYsMTUuMzQ2MTUzOCBMOC42LDE1LjM0NjE1MzggQzguNiwxNy4wMTg5Mzk0IDcuMjQzOTM5MzksMTguMzc1IDUuNTcxMTUzODUsMTguMzc1IEwtMi42LDE4LjM3NSIgaWQ9IlJlY3RhbmdsZS02IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzLjAwMDAwMCwgMTUuMzQ2MTU0KSBzY2FsZSgxLCAtMSkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtMy4wMDAwMDAsIC0xNS4zNDYxNTQpICI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTS0yLjQsOC40ODA3NjkyMyBMOC4zODA3NjkyMyw4LjQ4MDc2OTIzIEw4LjM4MDc2OTIzLDguNDgwNzY5MjMgQzkuNDk1OTU5NTksOC40ODA3NjkyMyAxMC40LDkuMzg0ODA5NjQgMTAuNCwxMC41IEwxMC40LDEwLjUgTDEwLjQsMTAuNSBDMTAuNCwxMS42MTUxOTA0IDkuNDk1OTU5NTksMTIuNTE5MjMwOCA4LjM4MDc2OTIzLDEyLjUxOTIzMDggTC0wLjgsMTIuNTE5MjMwOCIgaWQ9IlJlY3RhbmdsZS02IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjAwMDAwMCwgMTAuNTAwMDAwKSByb3RhdGUoLTkwLjAwMDAwMCkgdHJhbnNsYXRlKC00LjAwMDAwMCwgLTEwLjUwMDAwMCkgIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=") 3% 45%/18px 16px no-repeat;
-  /* [1] */
-}
-
-/**
- * ==============================================
  * Header Element Styling
  * ==============================================
  *
@@ -1364,41 +1097,6 @@ h5 small, h6 small {
 
 /**
  * ==============================================
- * Table Styling
- * ==============================================
- *
- * This file contains styling for table element
- */
-/**
- * Defines the default color to use in table border
- *
- * @type Color
- */
-/**
- * Sets style for table element
- */
-table {
-  width: auto;
-  max-width: 100%;
-  font-size: 0.875em;
-}
-
-table caption {
-  margin: 0.5rem 0;
-}
-
-th, td {
-  border: 2px solid #EFEFEF;
-  padding: 0.3rem 0.5rem;
-}
-
-th {
-  font-weight: 700;
-  text-align: center;
-}
-
-/**
- * ==============================================
  * Text Content Styling
  * ==============================================
  *
@@ -1443,7 +1141,7 @@ p {
  * instead the user agent rules for it are preserved
  */
 blockquote {
-  border-left: 5px solid #0069FF;
+  border-left: 5px solid #0069ff;
   padding: 0.5rem 2rem;
 }
 
@@ -1558,7 +1256,7 @@ pre {
   padding: 1.2rem;
   margin-bottom: 1em;
   font-size: 0.875em;
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 /**
@@ -1573,7 +1271,7 @@ pre {
  * Includes styles for visited, hover and active states
  */
 a {
-  color: #0069FF;
+  color: #0069ff;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
@@ -1619,8 +1317,8 @@ samp {
   display: inline-block;
   padding: 0.1em 0.5em;
   margin: 0 3px;
-  -webkit-box-shadow: 0 0 0 1px #E1E1E1;
-          box-shadow: 0 0 0 1px #E1E1E1;
+  -webkit-box-shadow: 0 0 0 1px #e1e1e1;
+          box-shadow: 0 0 0 1px #e1e1e1;
   border-radius: 3px;
   font-size: 0.875em;
 }
@@ -2061,23 +1759,23 @@ sup {
 }
 
 .o-logo {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.25em;
   font-weight: 900;
 }
 
 .o-link {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.25em;
   font-weight: 900;
 }
 
 .o-link:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .o-link:visited {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /**
@@ -2132,23 +1830,29 @@ sup {
 }
 
 .o-hero-title {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 4em;
   padding-right: 1rem;
 }
 
 .o-hero-text {
-  color: #FFFFFF;
+  color: #ffffff;
   padding-left: 1rem;
 }
 
 .c-portfolio {
   position: relative;
-  top: 100vh;
   z-index: 5;
   overflow-x: scroll;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
+  /**
+   * Check if breakpoints are provided.
+   *
+   * There may be cases where you only want to target media types, not a
+   * specific breakpoint for example, when using the print media query.
+   */
+  /**
+     * Check if the Fendy breakpoint reference has the given breakpoint defined.
+     */
 }
 
 .c-portfolio__list {
@@ -2167,12 +1871,14 @@ sup {
      */
 }
 
-.c-portfolio__item {
+.c-portfolio__item,
+[class*='c-portfolio__item--'] {
+  position: relative;
   width: 90%;
   padding: 0.5rem;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 4px;
-  margin: 0.5rem auto;
+  margin: 1rem auto;
   /**
    * Check if breakpoints are provided.
    *
@@ -2184,8 +1890,31 @@ sup {
      */
 }
 
+.c-portfolio__item a,
+[class*='c-portfolio__item--'] a {
+  width: 100%;
+}
+
+.c-portfolio__item--wip:hover::before {
+  content: 'Work in Progress 🙃';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.73);
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  padding-top: 7rem;
+}
+
 .o-item-photo {
   width: 100%;
+  height: 12em;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 4px;
 }
 
@@ -2239,35 +1968,35 @@ sup {
    * Check fr the color brand scheme map
    */
 .u-color-primary {
-  color: #0069FF;
+  color: #0069ff;
 }
 
 .u-bkg-primary {
-  background-color: #0069FF;
+  background-color: #0069ff;
 }
 
 .u-color-success {
-  color: #4FD474;
+  color: #4fd474;
 }
 
 .u-bkg-success {
-  background-color: #4FD474;
+  background-color: #4fd474;
 }
 
 .u-color-warning {
-  color: #FFBD2F;
+  color: #ffbd2f;
 }
 
 .u-bkg-warning {
-  background-color: #FFBD2F;
+  background-color: #ffbd2f;
 }
 
 .u-color-error {
-  color: #F13C3F;
+  color: #f13c3f;
 }
 
 .u-bkg-error {
-  background-color: #F13C3F;
+  background-color: #f13c3f;
 }
 
 /**
@@ -4101,14 +3830,20 @@ sup {
     width: 100%;
     margin: 0;
   }
+  .c-portfolio {
+    top: 100vh;
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
   .c-portfolio__list {
-    width: auto;
+    width: calc(22em * 6);
     top: initial;
     left: 20%;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
   }
-  .c-portfolio__item {
+  .c-portfolio__item,
+  [class*='c-portfolio__item--'] {
     width: 22em;
     margin: 0 1rem;
   }
