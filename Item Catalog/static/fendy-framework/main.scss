@@ -1,0 +1,140 @@
+@charset 'UTF-8';
+
+/**
+ * ==============================================
+ * Fendy Framework
+ * Version 1.0.0
+ * https://github.com/Fendy/fendy-framework
+ * Licensed under MIT
+ * ==============================================
+ *
+ * Developed by Luis Fernando Saavedra Meza
+ * Copyright 2017
+ *
+ * Welcome to Fendy folks, this file is where everything comes toegether and
+ * more importantly, this is the file that you'll want to output as a nice,
+ * minified css file to add in your HTML. But before that, there's some info
+ * you might need to understand about how Fendy works like it's architecture,
+ * naming convention and other things so if you haven't checked thouse out or
+ * want to know more about it I recommend you to take a look to the wiki.
+ *
+ *
+ * CONTENTS
+ * ----------------
+ * 1. Settings    -> Variables, fonts...
+ * 2. Tools       -> Functions, mixins...
+ * 3. Generic     -> Resets, vendors...
+ * 4. Elements    -> HTML elements...
+ * 5. Objects     -> Common patterns...
+ * 6. Components  -> UI components...
+ * 7. Utilities   -> Utility classes, helpers...
+ */
+
+/**
+ *  =============================================
+ *  #SETTINGS
+ *  =============================================
+ */
+
+@import
+  './settings/colors',
+  './settings/fonts',
+  './settings/variables';
+
+
+
+
+
+/**
+*  =============================================
+*  #TOOLS
+*  =============================================
+*/
+
+@import
+  './tools/color',
+  './tools/fonts',
+  './tools/responsive',
+  './tools/typography';
+
+
+
+
+
+/**
+*  ==============================================
+*  #GENERIC
+*  ==============================================
+*/
+
+@import
+  './node_modules/normalize.css/normalize',
+  './generic/reset',
+  './generic/base';
+
+
+
+
+
+/**
+*  ==============================================
+*  #Elements
+*  ==============================================
+*/
+
+@import
+  './elements/forms',
+  './elements/headers',
+  './elements/table',
+  './elements/text-content',
+  './elements/text-level-semantics';
+
+
+
+
+
+/**
+ *  =============================================
+ *  #OBJECTS
+ *  =============================================
+ */
+
+
+
+
+
+@import
+  './objects/grid',
+  './objects/wrapper';
+
+/**
+*  =============================================
+*  #COMPONENTS
+*  =============================================
+*/
+
+@import
+  './components/app',
+  './components/banner',
+  './components/catalogue';
+
+
+
+
+/**
+ *  =============================================
+ *  #TRUMPS
+ *  =============================================
+ */
+
+@import
+  './utilities/border-radius',
+  './utilities/color',
+  './utilities/display',
+  './utilities/fonts',
+  './utilities/margin',
+  './utilities/padding',
+  './utilities/text',
+  './utilities/typography',
+  './utilities/vertical-align',
+  './utilities/widths';

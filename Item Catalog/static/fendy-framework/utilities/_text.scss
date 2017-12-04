@@ -1,0 +1,84 @@
+/**
+ * ==============================================
+ * Text utilities
+ * ==============================================
+ *
+ * This file contains utilities for text.
+ *
+ * CONTENTS:
+ * 1. Options
+ * 2. Alignment
+ * 3. Transform
+ * 4. Truncate
+ */
+
+/**
+  * ==============================================
+  * #OPTIONS
+  * ==============================================
+  */
+
+$fendy-truncate-lines: 3 !default;
+
+$fendy-truncate-line-height: 1.6 !default;
+
+
+
+
+
+/**
+ * ==============================================
+ * #ALIGNMENT
+ * ==============================================
+ */
+
+.u-text-left { text-align: left; }
+.u-text-center { text-align: center; }
+.u-text-right { text-align: right; }
+
+
+
+
+
+/**
+ * ==============================================
+ * #TRANSFORM
+ * ==============================================
+ */
+
+.u-text-uppercase { text-transform: uppercase; }
+.u-text-lowercase { text-transform: lowercase; }
+.u-text-capitalize { text-transform: capitalize; }
+
+
+
+
+
+/**
+ * ==============================================
+ * #TRUNCATE
+ * ==============================================
+ */
+
+.u-text-truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * Defines a variation of the text truncate class that defines text truncate for
+ * multiline text.
+ *
+ * DISCLAIMER: Only works for webkit browsers
+ */
+/* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+.u-text-truncate--multiline {
+  display: -webkit-box;
+  -webkit-line-clamp: $fendy-truncate-lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* stylelint-enable */

@@ -1,0 +1,90 @@
+/**
+ * ==============================================
+ * Padding utility classes
+ * ==============================================
+ *
+ * This file contains utility classes for providing padding to elements.
+ *
+ * Stripping the padding out of basic elements helps with the
+ * 'separation of concerns' approach to design-agnostic architectures.
+ */
+
+/**
+ * Settings for padding classes.
+ *
+ * Defines a map with each value of padding to use
+ * across the project
+ *
+ * @type Map
+ */
+$padding-settings: (
+  'clear': 0,
+  's': 0.5rem,
+  'm': 1rem,
+  'l': 1.5rem,
+  'xl': 2rem
+);
+
+
+
+
+
+/**
+ * Creates utility clases for providing padding to the content box.
+ * Includes responsive suffixes.
+ */
+@mixin padding-classes() {
+  @each $name, $value in $padding-settings {
+
+    /**
+     * Defines measure of padding for the entire content box
+     */
+    .u-pad-#{$name} {
+      padding: $value;
+      @include responsive-states() { padding: $value; }
+    }
+
+    /**
+     * Defines measure of padding for the vertical axis of the
+     * content box
+     */
+    .u-pad-#{$name}--vertical {
+      padding-top: $value;
+      padding-bottom: $value;
+      @include responsive-states() {
+        padding-top: $value;
+        padding-bottom: $value;
+      }
+    }
+
+    /**
+     * Defines measure of padding for the horizontal axis of
+     * the content box
+     */
+    .u-pad-#{$name}--horizontal {
+      padding-left: $value;
+      padding-right: $value;
+      @include responsive-states() {
+        padding-left: $value;
+        padding-right: $value;
+      }
+    }
+
+    /**
+     * Defines measure of padding for each side of the content box
+     */
+    @each $side in ('top', 'right', 'bottom', 'left') {
+
+      .u-pad-#{$name}--#{$side} {
+        padding-#{$side}: $value;
+        @include responsive-states() { padding-#{$side}: $value; }
+      }
+    }
+  }
+}
+
+
+
+
+
+@include padding-classes();

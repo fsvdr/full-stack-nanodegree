@@ -1,0 +1,45 @@
+/**
+ * ==============================================
+ * Fonts
+ * ==============================================
+ *
+ * This file contains all font declarations, wheter using
+ * font-face of external resources like Google Fonts. Rather than
+ * 'assigning roles' to fonts, this is the place where you assign
+ * them to variables to be used across the project.
+ */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Assistant:600,800');
+
+/**
+ * Default system fonts for common operating systems
+ *
+ * This fonts match the client's OS resulting in a more
+ * adaptable and coherent experience.
+ *
+ * @access public
+ * @type List
+ */
+$font-system-stack:
+  '-apple-system', 'system-ui', 'BlinkMacSystemFont',
+  'Segoe UI', 'Tahoma', 'Roboto', 'Oxygen', 'Ubuntu',
+  'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+
+$font-assistant: 'Assistant', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
+
+
+/**
+ * Defines all the font families shortcuts available for the project
+ *
+ * The fonts defined here will serve to create the font utilities (See
+ * <utilities/_fonts.scss>)
+ *
+ * @access public
+ * @type Map
+ */
+$font-families: (
+  'default': $font-open-sans,
+  'display': $font-assistant,
+  'system': $font-system-stack,
+) !default;

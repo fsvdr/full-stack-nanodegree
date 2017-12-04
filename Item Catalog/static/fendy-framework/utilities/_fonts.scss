@@ -1,0 +1,18 @@
+/**
+ * ==============================================
+ * Font utilities
+ * ==============================================
+ *
+ * This file contains utility classes for font families.
+ */
+
+@mixin font-utilities() {
+  @each $key, $value in $font-families {
+
+    .u-font-#{$key} {
+      font-family: get-font($key);
+    }
+  }
+}
+
+@include font-utilities();

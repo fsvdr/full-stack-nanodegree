@@ -1,0 +1,195 @@
+/**
+ * ==============================================
+ * Global resets
+ * ==============================================
+ *
+ * This file contains base reset rules
+ */
+
+/**
+ * Resets for html
+ *
+ * 1) Occupy all vertical available space
+ * 2) Avoid horizontal scroll
+ */
+html {
+  width: 100%;
+  height: auto;
+  min-height: 100%; /* [1] */
+  overflow-x: hidden; /* [2] */
+  font-size: 100%;
+  font-family: sans-serif;
+}
+
+
+
+
+
+/**
+ * Resets for body
+ *
+ * 1) Occupy all vertical available space
+ */
+body {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%; /* [1] */
+}
+
+
+
+
+
+/**
+ * Remove default user agent margin in block level elements
+ */
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+hr,
+pre {
+  margin: 0;
+}
+
+
+
+
+
+/**
+ * Resets default user agent style for lists
+ *
+ * 1) Make list item markers appear inside content flow
+ * 2) Reset list item marker type to modify them later
+ */
+dl, ol, ul {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside; /* [1] */
+  list-style-type: initial; /* [2] */
+}
+
+
+
+
+
+/**
+ * Resets default user agent style for links
+ */
+a {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+
+
+
+/**
+ * Enforce these on every browser
+ */
+b, strong { font-weight: 700; }
+i, em, dfn { font-style: italic; }
+del, s { text-decoration: line-through; }
+u { text-decoration: underline; }
+
+
+
+
+/**
+ * Resets the default user agent style for form related elements
+ *
+ * 1) Remove user agent appearance (chevrons and gradients)
+ */
+/* stylelint-disable selector-no-qualifying-type */
+button,
+input,
+select,
+textarea {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+input[type='text'], input[type='password'],
+input[type='date'], input[type='datetime-local'],
+input[type='email'], input[type='month'],
+input[type='number'], input[type='search'],
+input[type='tel'], input[type='time'],
+input[type='url'], input[type='week'],
+textarea {
+  cursor: text;
+}
+
+input[type='file'] {
+  cursor: pointer;
+}
+/* stylelint-enable */
+
+meter, progress {
+  width: 100%;
+  vertical-align: middle;
+  appearance: none;
+}
+
+select {
+  display: inline-block;
+  outline: none;
+  vertical-align: middle;
+  appearance: none; /* [1] */
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+
+
+
+
+/**
+ * Resets the default user agent style for focus
+ */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+
+
+
+
+/**
+ * Resets the default user agent style for tables
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+
+th, td {
+  padding: 0;
+}
+
+
+
+
+
+/**
+ * Prevent overflowing content
+ */
+img, embed,
+object, video {
+  max-width: 100%;
+}

@@ -1,0 +1,80 @@
+/**
+ * ==============================================
+ * Typography Mixins and Functions
+ * ==============================================
+ *
+ * This file contains mixins and functions useful for typography
+ */
+
+@mixin rules-from-settings($map) {
+  @each $rule, $value in $map {
+    #{$rule}: #{$value};
+  }
+}
+
+
+
+
+
+/**
+ * Calculates the equivalent em unit from a given pixel unit.
+ *
+ * @param Number  pixel   -   Pixel unit number
+ * @require $base-font-settings
+ * @return Number
+ */
+@function calc-em($pixel) {
+
+  /**
+   * Check if the base font settings map is defined and populated.
+   */
+  @if $base-font-settings == null {
+    @error
+      'calc-em() requires the base-font-settings maps in order to\
+      define a default pixel size for the body. Please make sure to\
+      include it in <settings/_variables.scss>';
+  }
+  @else {
+    $default-pixel-size: map-get($base-font-settings, 'font-size');
+    $result: ($pixel / $default-pixel-size) * 1em;
+    @return $result;
+  }
+}
+
+
+
+
+
+/**
+ * Get an 'em' font size from the previously defined key in the typography
+ * sizes map.
+ *
+ * @require Function calc-em()
+ * @return Number
+ */
+@function font-size($key) {
+
+  /**
+   * Check if the typography sizes map is defined and populated.
+   * @type {[type]}
+   */
+  @if $typography-sizes == null {
+    @error
+      'font-size() requires the typography-sizes map in order to\
+      function. Please make sure to include it in <settings/_variables.scss>';
+  }
+  @else {
+
+    /**
+     * Check if the provided key exists in the map.
+     */
+    @if map-has-key($typography-sizes, $key) {
+      $value: map-get($typography-sizes, $key);
+      @return calc-em($value);
+    }
+    @else {
+      @error
+        'The #{$key} key is not defined in the typography-sizes map.';
+    }
+  }
+}

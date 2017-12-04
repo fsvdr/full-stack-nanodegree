@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Item Catalog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
+
+        <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+		<script src="//apis.google.com/js/platform.js?onload=start"></script>
+
+		<!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+    </head>
+    <body>
+        <header class="c-app-header o-grid o-grid-axis-align--between o-grid-cross-align--center">
+            <span class="o-app-logo">TIC</span>
+            <div class="o-auth-providers">
+                {% if not user_id %}
+                    <span class="o-auth-btn">Log in/Sign in</span>
+                    <div class="o-auth-providers__provider">
+                        <div id="signinButton">
+                    	    <span class="g-signin"
+                    	      data-scope="openid email"
+                    	      data-clientid="{{CLIENT_ID}}"
+                    	      data-redirecturi="postmessage"
+                    	      data-accesstype="offline"
+                    	      data-cookiepolicy="single_host_origin"
+                    	      data-callback="signInCallback"
+                    	      data-approvalprompt="force">
+                    	    </span>
+                		</div>
+                    </div>
+                {% else %}
+                    <a href="{{url_for('doLogout')}}" class="o-auth-btn">Log out</a>
+                {% endif %}
+            </div>
+        </header>
+        <div class="c-app">
+            <div class="c-catalogue-banner o-grid o-grid-cross-align--center">
+                <nav class="c-catalogue-banner__categories o-grid__child u-12of12 u-2of12@lap">
+                    <ul class="c-categories-list">
+                        {% for c in categories %}
+                            <li class="c-categories-list__item is-active"><a href="{{url_for('showCatalog', category_name=c.name)}}">{{c.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+                <div class="c-catalogue-banner__display [ o-grid__child u-12of12 u-10of12@lap ] [ o-grid--vertical o-grid-axis-align--between o-grid-wrap--no ]">
+                    <div class="c-display-details">
+                        <h1 class="o-display-title">{{selection.name}}</h1>
+                        <p class="o-display-description">{{selection.description}}</p>
+                    </div>
+                    {% if user_id %}
+                        <div class="o-grid__child u-12of12">
+                            <a href="{{url_for('newCategoryItem')}}" class="o-btn">Add new item</a>
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <span class="o-flashing-msg u-margin-l--left u-font-display">{{message}}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="c-catalogue-list o-grid o-grid-cross-align--center">
+                {% for i in items %}
+                    <div class="o-grid__child u-12of12 u-6of12@tab u-3of12@lap">
+                        <div class="c-catalogue-list__item">
+                            <h2 class="o-item-name t3">{{i.name}}</h2>
+                            <p class="o-item-description s1">{{i.description}}</p>
+                            {% if user_id and i.user_id == user_id %}
+                                <div class="c-catalogue-list__item-actions o-grid o-grid-axis-align--between">
+                                    <a href="{{url_for('deleteCategoryItem', item_id=i.id)}}" class="o-item-action">Delete</a>
+                                    <a href="{{url_for('editCategoryItem', item_id=i.id)}}" class="o-item-action">Edit</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="c-toast">
+                <span>Redirecting...</span>
+            </div>
+        </div>
+
+        <script>
+			function signInCallback(response) {
+				if (response['code']) {
+					// Successful request
+
+					// Send the one-time-use code to the server, if the server responds,
+					// write a 'login successful' message to the web page and then
+					// redirect back to the main restaurants page
+					$.ajax({
+						type: 'POST',
+						url: '/login?state={{state}}',
+						processData: false,
+						data: response['code'],
+						contentType: 'application/octet-stream; charset=utf-8',
+						success: function(result) {
+                            $('.c-toast').toggleClass('is-active');
+                            setTimeout(function() {
+                                window.location.href = "/catalog";
+                            }, 3000)
+					 	}
+				 	});
+				} else if (response['error']) {
+					// Unsuccessful request
+					console.error('There was an error with the request:', response['error']);
+				} else {
+					// Something went wrong...
+				    console.error('Failed to make a server-side call. Check your configuration and console.');
+				}
+			}
+		</script>
+    </body>
+</html>

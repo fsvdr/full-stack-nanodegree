@@ -1,0 +1,148 @@
+/**
+ * ==============================================
+ * Text Level Semantics Styling
+ * ==============================================
+ *
+ * This file contains styling for text level elements
+ */
+
+/**
+ * Sets default style for links
+ * Includes styles for visited, hover and active states
+ */
+a {
+  color: inherit;
+  transition: color $base-animation-duration;
+
+  &:hover,
+  &:active {
+    color: get-hover-color(#000000, false);
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for abbreviations
+ *
+ * 1) Sets cursor to question mark
+ */
+abbr {
+  display: inline-block;
+  cursor: help; /* [1] */
+}
+
+
+
+
+/**
+ * Sets default style for cite element
+ */
+cite {
+  font-style: italic;
+  font-weight: 100;
+
+  &::before {
+    content: '―';
+    margin-right: 5px;
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for code, keyboard input and sample output
+ */
+code,
+kbd,
+samp {
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  margin: 0 3px;
+  box-shadow: 0 0 0 1px #E1E1E1;
+  border-radius: 3px;
+  font-size: font-size('s1');
+}
+
+
+
+
+
+/**
+ * Sets default style for code that is wrapped inside a preformatted tag
+ *
+ * @type Number
+ */
+pre code {
+  padding: 0;
+  border: 0;
+  width: 100%;
+  box-shadow: none;
+  margin: 0;
+}
+
+
+
+
+
+/**
+ * Sets default style for mark element
+ */
+mark {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%;
+    height: 40%;
+    transform: translate(-50%, -50%);
+    background-color: transparentize($accent-color or #000000, 0.47);
+    border-radius: 1rem;
+  }
+}
+
+
+
+
+
+/**
+ * Sets default style for inline quotes
+ */
+q {
+  font-style: italic;
+}
+
+
+
+
+
+/**
+ * Sets default style for small element
+ */
+small {
+  font-size: font-size('s2');
+}
+
+
+sub {
+  font-size: font-size('s2');
+  vertical-align: text-bottom;
+  bottom: initial;
+}
+
+sup {
+  font-size: font-size('s2');
+  vertical-align: text-top;
+  top: initial;
+}

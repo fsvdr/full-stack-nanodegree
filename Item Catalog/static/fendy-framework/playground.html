@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fendy Playground</title>
+
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="A playground for testing elements, objects and components">
+
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+
+  <body>
+    <header class="o-split-header l-flex">
+      <div class="l-flex__item--6of12@mob">
+        <h1 class="o-website-logo">Fendy</h1>
+      </div>
+      <div class="l-flex__item--6of12@mob">
+        <p class="t3">Welcome to Fendy folks, this is a playground file where you can see and test styles.</p>
+      </div>
+    </header>
+    <div class="c-styleguide">
+      <section class="c-styleguide__section">
+        <h2>Typography</h2>
+
+        <div class="o-group">
+          <h3 class="t6 o-group__title">Headers</h3>
+          <div class="o-group__content">
+            <h1>h1. Header 1 <small>Subheader</small></h1>
+            <h2>h2. Header 2 <small>Subheader</small></h2>
+            <h3>h3. Header 3 <small>Subheader</small></h3>
+            <h4>h4. Header 4 <small>Subheader</small></h4>
+            <h5>h5. Header 5 <small>Subheader</small></h5>
+            <h6>h6. Header 6 <small>Subheader</small></h6>
+          </div>
+        </div>
+
+        <div class="o-group">
+          <h3 class="t6 o-group__title">Body copy</h3>
+          <div class="o-group__content">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </div>
+        </div>
+
+				<div class="o-group">
+          <h3 class="t6 o-group__title">Bloquote</h3>
+          <div class="o-group__content">
+						<blockquote>
+							<p>I do not like strangers because I do not like people I have never met before. They are hard to understand.</p>
+							<cite>Mark Haddon</cite>
+						</blockquote>
+          </div>
+        </div>
+
+				<div class="o-group">
+          <h3 class="t6 o-group__title">Definition lists</h3>
+          <div class="o-group__content">
+						<dl>
+							<dt>Term</dt>
+							<dd>Definition of the term</dd>
+							<dt>Term</dt>
+							<dd>Definition of the term</dd>
+						</dl>
+          </div>
+        </div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Ordered lists</h3>
+					<div class="o-group__content">
+						<ol>
+							<li>List inline</li>
+							<li>List inline</li>
+							<ol>
+								<li>List inline</li>
+								<li>List inline</li>
+								<ol>
+									<li>List inline</li>
+									<li>List inline</li>
+								</ol>
+							</ol>
+						</ol>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Unordered lists</h3>
+					<div class="o-group__content">
+						<ul>
+							<li>List inline</li>
+							<li>List inline</li>
+							<ul>
+								<li>List inline</li>
+								<li>List inline</li>
+								<ul>
+									<li>List inline</li>
+									<li>List inline</li>
+								</ul>
+							</ul>
+						</ul>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Figure</h3>
+					<div class="o-group__content">
+						<figure>
+							<figcaption>Fig. 1 This is a capton</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Horizontal rule</h3>
+					<div class="o-group__content">
+						<hr>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Preformatted text</h3>
+					<div class="o-group__content">
+						<pre>
+This is
+some
+preformatted text</pre>
+					</div>
+				</div>
+
+				<div class="o-group">
+          <h3 class="t6 o-group__title">Text level semantics</h3>
+					<div class="o-group__content">
+						<a href="http://urbanmedia.company" target="_blank">This is a link</a>
+						p><abbr title="Hypertext Markup Language">HTML</abbr> is an abbreviation, check what it means</p>
+						<p>This paragraph has a <b>bold</b> tag</p>
+						<p>This paragraph has an <i>italic</i> tag</p>
+						<p>In code, the <code>font-family</code> property is set to Monospace</p>
+						<pre>
+This is a code block
+<code>
+code {
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  background-color: $base-default-color;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+}
+</code>
+						</pre>
+						<p>This paragraph has <mark>marked</mark> text</p>
+						<p>This paragraph has a <q>quote</q></p>
+						<p>This is a paragraph with some <del>deleted</del> text</p>
+						<p>This paragraph has some <small>small text</small></p>
+						<p>This paragraph has some <sub>sub text<sub></p>
+						<p>This paragraph has some <sup>sub text<sup></p>
+						<p>This paragraph has the time: <time>4:27</time></p>
+						<p>This paragraph has an <u>underlined</u> tag</p>
+					</div>
+        </div>
+      </section>
+
+			<section class="c-styleguide__section">
+        <h2>Tables</h2>
+
+        <div class="o-group">
+          <div class="o-group__content">
+						<table>
+						  <thead>
+						    <tr>
+						      <td colspan="4">Encabezado de la tabla</td>
+						    </tr>
+						    <tr>
+						      <th>Columna 1</th>
+						      <th>Columna 2</th>
+						      <th>Columna 3</th>
+						    </tr>
+						  </thead>
+						  <tfoot>
+						    <tr>
+						      <td colspan="4">Pie de la tabla</td>
+						    </tr>
+						  </tfoot>
+						  <tbody>
+						    <tr>
+						      <td rowspan="2">Fila 1 Celda 1</td>
+						      <td>Fila 1 Celda 2</td>
+						      <td>Fila 1 Celda 3</td>
+						    </tr>
+						    <tr>
+						      <td>Fila 2 Celda 2</td>
+						      <td>Fila 2 Celda 3</td>
+						    </tr>
+						    <tr>
+						      <td colspan="3">Fila 3 Celda 1</td>
+						    </tr>
+						  </tbody>
+							<caption>Caption para la tabla</caption>
+						</table>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+			<section class="c-styleguide__section">
+				<h2>Forms</h2>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Buttons</h3>
+					<div class="o-group__content">
+						<button>Click me!</button>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Text field inputs</h3>
+					<div class="o-group__content">
+						<input type="text" placeholder="Start typing..." />
+					</div>
+				</div>
+
+        <div class="o-group">
+					<h3 class="t6 o-group__title">File inputs</h3>
+					<div class="o-group__content">
+						<input type="file" placeholder="Start typing..." />
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Checkboxes</h3>
+					<div class="o-group__content">
+						<input type="checkbox" />
+						<input type="checkbox" />
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Radio buttons</h3>
+					<div class="o-group__content">
+						<input type="radio" name="example" />
+						<input type="radio" name="example" />
+					</div>
+				</div>
+
+        <div class="o-group">
+					<h3 class="t6 o-group__title">Labels for inputs</h3>
+					<div class="o-group__content">
+						<label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Type your name" />
+            <label>
+              Subscribe to newsletter
+              <input type="checkbox" name="subscribe"/>
+            </label>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Meter</h3>
+					<div class="o-group__content">
+						<meter low="69" high="80" max="100" value="84">B</meter>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Progress</h3>
+					<div class="o-group__content">
+						<progress value="70" max="100">70 %</progress>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Select input</h3>
+					<div class="o-group__content">
+						<select name="food" class="u-padding-h-medium u-pad-s--vertical u-pad-m--horizontal">
+							<option value="1">Pizza</option>
+							<option value="2">Hamburguer</option>
+							<option value="3">Tacos</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="o-group">
+					<h3 class="t6 o-group__title">Text area</h3>
+					<div class="o-group__content">
+						<textarea name="textarea">Write something here</textarea>
+					</div>
+				</div>
+
+        <div class="o-group">
+          <h3 class="t6 o-group__title">Fieldsets</h3>
+          <div class="o-group__content">
+						<fieldset>
+
+              <label for="name">Name:</label>
+              <input type="text" name="name" placeholder="Type your name" />
+              <label>
+                Subscribe to newsletter
+                <input type="checkbox" name="subscribe"/>
+              </label>
+              <legend>Fieldset title</legend>
+            </fieldset>
+					</div>
+        </div>
+
+			</section>
+    </div>
+  </body>
+</html>

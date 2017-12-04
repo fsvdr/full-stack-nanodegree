@@ -1,0 +1,320 @@
+/**
+ * ==============================================
+ * Form related elements styling
+ * ==============================================
+ *
+ * This file contains styling for form elements
+ * These styles are ment to replace the default user agent styles not to
+ * provide a design solution. Think of these as a base on which to build
+ * your design implementation.
+ *
+ * CONTENTS:
+ * 1. Variables
+ * 2. Button
+ * 3. Input and Textarea
+ * 4. Label
+ * 5. Meter
+ * 6. Progress
+ * 7. Select
+ * 8. Fieldset
+ */
+
+/**
+ * ==============================================
+ * #VARIABLES
+ * ==============================================
+ */
+
+/**
+ * Base border width use for form fields
+ *
+ * @type Number
+ */
+$base-field-border-width: 1px;
+
+/**
+ * Base color set as border and/or box shadow for form fields
+ *
+ * @type Color
+ */
+$base-field-border-color: rgba(0, 0, 0, 0.12) !default;
+
+/**
+ * Minimum recommended width for tapable targets
+ * In order to be accessible in touch devices, some elements that the user
+ * will interact with need to be of a a minimum size
+ *
+ * @type Number
+ */
+$minimum-tapable-target-width: 44px !default;
+
+/**
+ * Minimum recommended width for tapable targets
+ * In order to be accessible in touch devices, some elements that the user
+ * will interact with need to be of a a minimum size
+ *
+ * @type Number
+ */
+$minimum-tapable-target-height: auto !default;
+
+/**
+ * Unfortunatly on the meter element setting appearance to none will remove
+ * the element entirely from chrome showing the actual contents of the tags
+ * (fallbacks) but setting it to meter will reset the user agent styles on
+ * safari so this an entirely subjective matter on what browser should
+ * give more importance to the element itself.
+ *
+ * In fendy by default the meter element has the appearance property set to
+ * none so you should set this to 'chrome' if you want to give preference
+ * to it. Set it to 'safari' (or whatever else you want) to give it meter
+ * appearance.
+ *
+ * @type String
+ */
+$meter-browser-preference: 'chrome' !default;
+
+/**
+ * Color palette for the meter element.
+ *
+ * bar          Used for the background of the element.
+ * optimum      Used when the value falls inside the low-high range.
+ * suboptimum   Used when the value falls outside the low-high range.
+ * less-good    Used when the value and the optimim attributes fall outside
+ * the low-high range but in opposite zones.
+ *
+ * @type Map
+ */
+$meter-pseudo-colors: (
+  'bar': $base-field-border-color,
+  'optimum': #4FD474,
+  'suboptimum': #FBB523,
+  'less-good': #FC483C
+) !default;
+
+/**
+ * Color palette for the progress element.
+ *
+ * bar          Used for the background of the element.
+ * value        Used for the value inside the bar.
+ * @type Map
+ */
+$progress-pseudo-colors: (
+  'bar': $base-field-border-color,
+  'value': #4FD474,
+) !default;
+
+
+
+
+
+/**
+ * ==============================================
+ * #BUTTON
+ * ==============================================
+ */
+
+/**
+ * Gives buttons some border and padding
+ */
+button {
+  border: $base-field-border-width solid $base-field-border-color;
+  min-width: $minimum-tapable-target-width;
+  min-height: $minimum-tapable-target-height;
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #INPUT
+ * ==============================================
+ */
+
+/* stylelint-disable selector-no-qualifying-type */
+input[type='text'], input[type='password'],
+input[type='date'], input[type='datetime-local'],
+input[type='email'], input[type='file'],
+input[type='month'], input[type='number'],
+input[type='search'], input[type='tel'],
+input[type='time'], input[type='url'],
+input[type='week'],
+textarea {
+  border: $base-field-border-width solid $base-field-border-color;
+  min-width: $minimum-tapable-target-width;
+}
+/* stylelint-enable */
+
+
+
+
+
+/**
+ * ==============================================
+ * #LABEL
+ * ==============================================
+ */
+label {
+  cursor: pointer;
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #METER
+ * ==============================================
+ */
+
+/**
+ * Sets base style for the meter element across webkit and moz browsers
+ * To learn more about styling the meter element you can refer to:
+ * https://css-tricks.com/html5-meter-element/
+ */
+meter {
+  @if ($meter-browser-preference == 'chrome') {
+    appearance: meter;
+  }
+  height: 0.3rem;
+}
+
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'bar');
+}
+
+meter::-webkit-meter-optimum-value {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'optimum');
+}
+
+meter::-webkit-meter-suboptimum-value {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'suboptimum');
+}
+
+meter::-webkit-meter-even-less-good-value {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'less-good');
+}
+
+meter::-moz-meter-bar {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'bar');
+}
+
+meter::-moz-meter-optimum {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'optimum');
+}
+
+meter::-moz-meter-sub-optimum {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'suboptimum');
+}
+
+meter::-moz-meter-sub-sub-optimum {
+  background: none;
+  background-color: map-get($meter-pseudo-colors, 'less-good');
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #PROGRESS
+ * ==============================================
+ */
+
+/**
+ * Sets base style for the progress element across webkit and moz browsers.
+ * To learn more about styling the progress element you can refer to:
+ * https://css-tricks.com/html5-progress-element/
+ */
+progress {
+  appearance: none;
+  border: none;
+  height: 0.3em;
+}
+
+progress::-webkit-progress-bar {
+  background-color: map-get($progress-pseudo-colors, 'bar');
+}
+
+progress::-webkit-progress-value {
+  background-color: map-get($progress-pseudo-colors, 'value');
+}
+
+progress::-moz-progress-bar {
+  background-color: map-get($progress-pseudo-colors, 'bar');
+}
+
+progress::-moz-progress-value {
+  background-color: map-get($progress-pseudo-colors, 'value');
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #SELECT
+ * ==============================================
+ */
+
+/**
+ * Sets base style for the select element.
+ *
+ * 1) Defines a chevron on the right side of the element
+ */
+select {
+  /* stylelint-disable-next-line */
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTggMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQXJ0Ym9hcmQtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzOC4wMDAwMDAsIC00MS4wMDAwMDApIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPHBhdGggZD0iTTE0OS40NDQ2MTgsNDkuODM2ODU0NiBMMTU1LjgwNjU5OSw0My40NzQ4NzM3IEwxNTMuNjg1Mjc4LDQxLjM1MzU1MzQgTDE0Ny4zMjMyOTgsNDcuNzE1NTM0MiBMMTQwLjk2MTMxNyw0MS4zNTM1NTM0IEwxMzguODM5OTk2LDQzLjQ3NDg3MzcgTDE0NS4yMDE5NzcsNDkuODM2ODU0NiBMMTQ1LjE5OTk5Nyw0OS44Mzg4MzQ4IEwxNDcuMzIxMzE3LDUxLjk2MDE1NTEgTDE0Ny4zMjMyOTgsNTEuOTU4MTc0OSBMMTQ3LjMyNTI3OCw1MS45NjAxNTUxIEwxNDkuNDQ2NTk4LDQ5LjgzODgzNDggTDE0OS40NDQ2MTgsNDkuODM2ODU0NiBaIiBpZD0iQ29tYmluZWQtU2hhcGUiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==') 90% 55%/14px 10px no-repeat; /* [1] */
+  border: $base-field-border-width solid $base-field-border-color;
+  border-radius: 0;
+  padding-right: 2em;
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #FIELDSET
+ * ==============================================
+ */
+
+fieldset {
+  width: 100%;
+  height: auto;
+  padding: 1rem 1rem 1.5rem;
+  border: $base-field-border-width solid $base-field-border-color;
+
+  legend {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+/* stylelint-disable-next-line */
+input[type='file']::-webkit-file-upload-button {
+  outline: 0;
+  border: 0;
+  opacity: 0;
+  width: 10%;
+  visibility: hidden;
+}
+
+/* stylelint-disable-next-line */
+input[type='file'] {
+  padding-top: 3px;
+  /* stylelint-disable-next-line */
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMjAgMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iSWNvbm9ncmFwaHkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9ImNsaXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjAwMDAwMCwgLTMuMDAwMDAwKSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEuMiI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMjUzMDQ4LCAxMi4yNTMwNDgpIHJvdGF0ZSg0NS4wMDAwMDApIHRyYW5zbGF0ZSgtMTIuMjUzMDQ4LCAtMTIuMjUzMDQ4KSB0cmFuc2xhdGUoOC4yNTMwNDgsIDEuNzUzMDQ4KSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMS4yLDQuNDQyMzA3NjkgTDguMzYxNTM4NDYsNC40NDIzMDc2OSBMOC4zNjE1Mzg0Niw0LjQ0MjMwNzY5IEMxMC41OTE5MTkyLDQuNDQyMzA3NjkgMTIuNCw2LjI1MDM4ODUxIDEyLjQsOC40ODA3NjkyMyBMMTIuNCw4LjQ4MDc2OTIzIEwxMi40LDguNDgwNzY5MjMgQzEyLjQsMTAuNzExMTUgMTAuNTkxOTE5MiwxMi41MTkyMzA4IDguMzYxNTM4NDYsMTIuNTE5MjMwOCBMLTQuNCwxMi41MTkyMzA4IiBpZD0iUmVjdGFuZ2xlLTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQuMDAwMDAwLCA4LjQ4MDc2OSkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtNC4wMDAwMDAsIC04LjQ4MDc2OSkgIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNLTIuNiwxMi4zMTczMDc3IEw1LjU3MTE1Mzg1LDEyLjMxNzMwNzcgTDUuNTcxMTUzODUsMTIuMzE3MzA3NyBDNy4yNDM5MzkzOSwxMi4zMTczMDc3IDguNiwxMy42NzMzNjgzIDguNiwxNS4zNDYxNTM4IEw4LjYsMTUuMzQ2MTUzOCBMOC42LDE1LjM0NjE1MzggQzguNiwxNy4wMTg5Mzk0IDcuMjQzOTM5MzksMTguMzc1IDUuNTcxMTUzODUsMTguMzc1IEwtMi42LDE4LjM3NSIgaWQ9IlJlY3RhbmdsZS02IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzLjAwMDAwMCwgMTUuMzQ2MTU0KSBzY2FsZSgxLCAtMSkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtMy4wMDAwMDAsIC0xNS4zNDYxNTQpICI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTS0yLjQsOC40ODA3NjkyMyBMOC4zODA3NjkyMyw4LjQ4MDc2OTIzIEw4LjM4MDc2OTIzLDguNDgwNzY5MjMgQzkuNDk1OTU5NTksOC40ODA3NjkyMyAxMC40LDkuMzg0ODA5NjQgMTAuNCwxMC41IEwxMC40LDEwLjUgTDEwLjQsMTAuNSBDMTAuNCwxMS42MTUxOTA0IDkuNDk1OTU5NTksMTIuNTE5MjMwOCA4LjM4MDc2OTIzLDEyLjUxOTIzMDggTC0wLjgsMTIuNTE5MjMwOCIgaWQ9IlJlY3RhbmdsZS02IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjAwMDAwMCwgMTAuNTAwMDAwKSByb3RhdGUoLTkwLjAwMDAwMCkgdHJhbnNsYXRlKC00LjAwMDAwMCwgLTEwLjUwMDAwMCkgIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=') 3% 45%/18px 16px no-repeat; /* [1] */
+}

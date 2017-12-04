@@ -1,0 +1,80 @@
+.c-app {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: get-color('background');
+}
+
+.c-app-header {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: get-color('white');
+}
+
+.o-auth-providers {
+  position: relative;
+
+  .o-auth-providers__provider {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.o-btn,
+.o-auth-btn {
+  font-family: $font-assistant;
+  font-weight: 700;
+  background-color: get-color('primary');
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: get-color('black');
+}
+
+.o-btn {
+  background-color: get-color('black');
+  color: get-color('white');
+}
+
+.o-app-logo {
+  font-family: $font-assistant;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+}
+
+.c-toast {
+  position: fixed;
+  bottom: -100%;
+  right: 2rem;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: get-color('primary');
+  color: get-color('black');
+  font-family: $font-assistant;
+  font-weight: 700;
+  box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 2rem;
+  }
+}
+
+.o-flashing-msg {
+  display: inline-block;
+
+  &::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: get-color('black');
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+}

@@ -1,0 +1,54 @@
+/**
+ * ==============================================
+ * Widths utilities
+ * ==============================================
+ *
+ * This file contains utilities for giving elements a specific width.
+ *
+ * @require Number  $fendy-grid-column-count
+ * @require Mixin   responsive-states()
+ *
+ * CONTENTS:
+ * 1. Options
+ * 2. Classes
+ */
+
+/**
+ * ==============================================
+ * #OPTIONS
+ * ==============================================
+ */
+
+/**
+ * Define $fendy-grid-column-count in case it's not found.
+ */
+@if $fendy-grid-column-count == null {
+  /* stylelint-disable-next-line */
+  @warn 'No "fendy-grid-column-count" option was found.\
+        Be sure to set it\'s value in "settings/_variables.scss"\
+        WILL PROCEED WITH THE DEFAULT FALLBACK OF 12 COLUMNS.';
+  $fendy-grid-column-count: 12 !default;
+}
+
+
+
+
+
+/**
+ * ==============================================
+ * #CLASSES
+ * ==============================================
+ */
+
+/**
+ * Defines width utilities
+ */
+@for $i from 1 to $fendy-grid-column-count + 1 {
+
+  .u-#{$i}of#{$fendy-grid-column-count} {
+    width: (100 * $i / $fendy-grid-column-count) * 1%;
+    @include responsive-states() {
+      width: (100 * $i / $fendy-grid-column-count) * 1%;
+    }
+  }
+}

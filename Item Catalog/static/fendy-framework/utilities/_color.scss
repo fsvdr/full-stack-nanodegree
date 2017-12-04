@@ -1,0 +1,29 @@
+/**
+ * ==============================================
+ * Color utilities
+ * ==============================================
+ *
+ * This file contains utility classes for color.
+ */
+
+@mixin color-utilities() {
+
+  /**
+   * Check fr the color brand scheme map
+   */
+  @if $color-brand-scheme == null {
+    @error
+      'color-utilities() requires the color brand scheme map to create\
+      utility classes. Please be sure to define and populate it.';
+  }
+  @else {
+    @each $key, $avlue in $color-brand-scheme {
+
+      .u-color-#{$key} { color: get-color($key); }
+
+      .u-bkg-#{$key} { background-color: get-color($key); }
+    }
+  }
+}
+
+@include color-utilities();

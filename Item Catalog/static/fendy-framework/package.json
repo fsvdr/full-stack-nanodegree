@@ -1,0 +1,42 @@
+{
+  "name": "fendy-framework",
+  "version": "1.0.0",
+  "description": "Extensible, design and content agnostic, ITCSS framework for building maintainable and scalable projects.",
+  "main": "main.scss",
+  "bin": {
+    "fendy": "./fendy-cli.js"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fendy/fendy-framework.git"
+  },
+  "keywords": [
+    "itcss",
+    "sass",
+    "bem",
+    "framework",
+    "css"
+  ],
+  "author": "Luis Fernando Saavedra Meza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fendy/fendy-framework/issues"
+  },
+  "homepage": "https://github.com/Fendy/fendy-framework#readme",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "css-mqpacker": "^6.0.1",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "postcss-reporter": "^3.0.0",
+    "postcss-scss": "^1.0.0",
+    "stylelint": "^8.0.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "normalize.css": "^7.0.0"
+  }
+}

@@ -1,0 +1,97 @@
+/**
+ * ==============================================
+ * Colors
+ * ==============================================
+ *
+ * This file contains all colors used accross the project.
+ *
+ * Fendy Framework approaches color management through descriptive AND
+ * functional variables to give you more flexibility.
+ */
+
+/**
+ * Descriptive color variables.
+ *
+ * The idea here is to declare every color you may use with a descriptive
+ * name. So instead of tying the color to a specific function, you can
+ * reuse them however you like.
+ *
+ * @access private
+ * @type Map
+ */
+$color-scheme: (
+  'true-black': #000000,
+  'darker-black': rgba(0, 0, 0, 0.87),
+  'regular-black': rgba(0, 0, 0, 0.54),
+  'lighter-black': rgba(0, 0, 0, 0.38),
+  'true-white': #FFFFFF,
+  'regular-white': rgba(255, 255, 255, 0.7),
+  'lighter-white': rgba(255, 255, 255, 0.5),
+  'blue': #0069FF,
+  'green': #4FD474,
+  'red': #F13C3F,
+  'yellow': #FFD2A5,
+  'grey': #F6F7F9
+) !default;
+
+
+
+
+
+/**
+ * Functional color variables.
+ * Defines the brand-specific colors to be available throughout the
+ * project.
+ *
+ * @access private
+ * @type Map
+ */
+$color-brand-scheme: (
+  'black': map-get($color-scheme, 'true-black'),
+  'white': map-get($color-scheme, 'true-white'),
+  'background': map-get($color-scheme, 'grey'),
+  'primary': map-get($color-scheme, 'yellow'),
+  'success': map-get($color-scheme, 'green'),
+  'warning': map-get($color-scheme, 'yellow'),
+  'error': map-get($color-scheme, 'red')
+) !default;
+
+
+
+
+
+/**
+* Functional variable
+* Defines the color to use in the body element.
+*
+* @access public
+* @type Color
+*/
+$body-color: map-get($color-scheme, 'darker-black') or #000000 !default;
+
+
+
+
+
+/**
+ * Functional variable
+ * Defines the color to use to denote importance of content
+ * or availability of interactivity.
+ *
+ * @access public
+ * @type Color
+ */
+$accent-color: map-get($color-scheme, 'blue') or #000000 !default;
+
+
+
+
+
+/**
+ * Functional variable
+ * Defines the color to use in headers
+ *
+ * @access public
+ * @type Color
+ */
+$header-color: map-get($color-scheme, 'darker-black') or #000000 !default;

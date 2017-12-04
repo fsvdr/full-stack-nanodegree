@@ -1,0 +1,70 @@
+.c-catalogue-banner {
+  width: 100%;
+  background-color: get-color('white');
+  @include respond-to('lap') { height: 40vh; }
+}
+
+.c-catalogue-back-btn {
+  font-family: $font-assistant;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 0;
+  padding: 1rem 0;
+  @include respond-to('lap') { margin-bottom: 2.5rem; }
+}
+
+.c-catalogue-banner__categories {
+  background-color: get-color('primary');
+  color: get-color('black');
+  height: 100%;
+}
+
+.c-categories-list {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  @include respond-to('lap') {
+    height: 100%;
+    padding: 1rem;
+    overflow: visible;
+  }
+
+  .c-categories-list__item {
+    list-style-type: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin: 0 1rem;
+    @include respond-to('lap') {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    a {
+      text-align: center;
+      border: 0;
+      @include respond-to('lap') { text-align: left; }
+    }
+
+    &.is-active a {
+      font-weight: 800;
+    }
+  }
+}
+
+.c-catalogue-banner__display {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+
+  .o-display-title {
+    font-family: $font-assistant;
+    font-weight: 700;
+  }
+
+  .o-display-description {
+    color: get-color('regular-black');
+  }
+}

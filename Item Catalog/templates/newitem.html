@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Item Catalog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <header class="c-app-header o-grid o-grid-axis-align--between o-grid-cross-align--center">
+            <span class="o-app-logo">TIC</span>
+            <a href="{{url_for('doLogout')}}" class="o-auth-btn">Log out</a>
+        </header>
+        <div class="c-app">
+            <div class="c-catalogue-banner o-grid o-grid-cross-align--center">
+                <nav class="c-catalogue-banner__categories o-grid__child u-12of12 u-2of12@lap [ o-grid o-grid-axis-align--center o-grid-content-align--end ]"></nav>
+
+                <div class="c-catalogue-banner__display [ o-grid__child u-12of12 u-10of12@lap ] [ o-grid--vertical o-grid-axis-align--between ]">
+                    <div class="c-display-details">
+                        <h1 class="o-display-title">Create new item</h1>
+                        <p class="o-display-description">Please fill in the info for the new item.</p>
+                    </div>
+
+                    <a href="{{url_for('default')}}" class="o-btn">Cancel</a>
+                </div>
+            </div>
+
+            <div class="c-catalogue-list">
+                <form class="c-catalogue-form o-grid o-grid-axis-align--center o-grid-cross-align--center" action="{{url_for('newCategoryItem')}}" method="post">
+                    <input class="o-input-field o-grid__child u-12of12 u-3of12@lap" type="text" name="name" placeholder="Item name" required/>
+                    <select class="o-input-field o-grid__child u-12of12 u-3of12@lap" name="category" required>
+                        {% for c in categories %}
+                            <option value="{{c.id}}">{{c.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="o-input-field o-grid__child u-12of12 u-3of12@lap" type="text" name="description" placeholder="Item description" required/>
+                    <button class="o-btn o-grid__child u-12of12 u-4of12@lap">Create</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

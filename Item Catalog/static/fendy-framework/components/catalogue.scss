@@ -1,0 +1,42 @@
+.c-catalogue-list {
+  width: 100%;
+  padding: 4rem 1rem 0;
+  @include respond-to('lap') { padding: 4rem 2rem 0; }
+}
+
+.c-catalogue-list__item {
+  background-color: get-color('white');
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+
+  .o-item-name {
+    font-family: $font-assistant;
+  }
+
+  .o-item-description {
+    color: get-color('lighter-black');
+  }
+
+  .o-item-action {
+    font-family: $font-assistant;
+    font-weight: 700;
+    border: 0;
+  }
+}
+
+.c-catalogue-form {
+  width: 100%;
+  padding-top: 4rem;
+
+  .o-input-field {
+    font-family: $font-assistant;
+    font-weight: 700;
+    font-size: 1.4rem;
+    border: 0;
+    padding: 0.5rem;
+    text-align: center;
+    margin: 0 1rem 4rem;
+  }
+}

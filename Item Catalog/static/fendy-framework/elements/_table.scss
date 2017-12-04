@@ -1,0 +1,41 @@
+/**
+ * ==============================================
+ * Table Styling
+ * ==============================================
+ *
+ * This file contains styling for table element
+ */
+
+/**
+ * Defines the default color to use in table border
+ *
+ * @type Color
+ */
+$table-border-color: #EFEFEF !default;
+
+
+
+
+
+/**
+ * Sets style for table element
+ */
+table {
+  width: auto;
+  max-width: 100%;
+  font-size: font-size('s1');
+
+  caption {
+    margin: 0.5rem 0;
+  }
+}
+
+th, td {
+  border: 2px solid $table-border-color;
+  padding: 0.3rem 0.5rem;
+}
+
+th {
+  font-weight: 700;
+  text-align: center;
+}

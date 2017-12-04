@@ -1,0 +1,90 @@
+/**
+ * ==============================================
+ * Margin utility classes
+ * ==============================================
+ *
+ * This file contains utility classes for providing margin to elements.
+ *
+ * Stripping the margin out of basic elements helps with the
+ * 'separation of concerns' approach to design-agnostic architectures.
+ */
+
+/**
+ * Settings for margin classes.
+ *
+ * Defines a map with each value of margin to use
+ * across the project
+ *
+ * @type Map
+ */
+$margin-settings: (
+  'c': 0,
+  's': 0.5rem,
+  'm': 1rem,
+  'l': 1.5rem,
+  'xl': 2rem
+);
+
+
+
+
+
+/**
+ * Creates utility clases for providing margin to the content box.
+ * Includes responsive suffixes.
+ */
+@mixin margin-classes() {
+  @each $name, $value in $margin-settings {
+
+    /**
+     * Defines measure of margin for the entire content box
+     */
+    .u-margin-#{$name} {
+      margin: $value;
+      @include responsive-states() { margin: $value; }
+    }
+
+    /**
+     * Defines measure of margin for the vertical axis of the
+     * content box
+     */
+    .u-margin-#{$name}--vertical {
+      margin-top: $value;
+      margin-bottom: $value;
+      @include responsive-states() {
+        margin-top: $value;
+        margin-bottom: $value;
+      }
+    }
+
+    /**
+     * Defines measure of margin for the horizontal axis of
+     * the content box
+     */
+    .u-margin-#{$name}--horizontal {
+      margin-left: $value;
+      margin-right: $value;
+      @include responsive-states() {
+        margin-left: $value;
+        margin-right: $value;
+      }
+    }
+
+    /**
+     * Defines measure of margin for each side of the content box
+     */
+    @each $side in ('top', 'right', 'bottom', 'left') {
+
+      .u-margin-#{$name}--#{$side} {
+        margin-#{$side}: $value;
+        @include responsive-states() { margin-#{$side}: $value; }
+      }
+    }
+  }
+}
+
+
+
+
+
+@include margin-classes();

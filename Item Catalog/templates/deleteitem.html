@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Item Catalog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <header class="c-app-header o-grid o-grid-axis-align--between o-grid-cross-align--center">
+            <span class="o-app-logo">TIC</span>
+            <a href="{{url_for('doLogout')}}" class="o-auth-btn">Log out</a>
+        </header>
+        <div class="c-app">
+            <div class="c-catalogue-banner o-grid o-grid-cross-align--center">
+                <nav class="c-catalogue-banner__categories o-grid__child u-12of12 u-2of12@lap [ o-grid o-grid-axis-align--center o-grid-content-align--end ]"></nav>
+
+                <div class="c-catalogue-banner__display [ o-grid__child u-12of12 u-10of12@lap ] [ o-grid--vertical o-grid-axis-align--between ]">
+                    <div class="c-display-details">
+                        <h1 class="o-display-title">Delete the selected item</h1>
+                        <p class="o-display-description">Please confirm the deletion of the presented item.</p>
+                    </div>
+
+                    <a href="{{url_for('default')}}" class="o-btn">Cancel</a>
+                </div>
+            </div>
+
+            <div class="c-catalogue-list">
+                <form class="c-catalogue-form o-grid o-grid-axis-align--center o-grid-cross-align--center" action="{{url_for('deleteCategoryItem', item_id=item.id)}}" method="post">
+                    <input class="o-input-field o-grid__child u-12of12 u-3of12@lap" type="text" name="name" placeholder="Item name" value="{{item.name}}" disabled/>
+                    <select class="o-input-field o-grid__child u-12of12 u-3of12@lap" name="category" value="{{item.category_id}}" disabled>
+                        <option value="{{category.id}}" selected>{{category.name}}</option>
+                    </select>
+                    <input class="o-input-field o-grid__child u-12of12 u-3of12@lap" type="text" name="description" placeholder="Item description" value="{{item.description}}" disabled/>
+                    <button class="o-btn o-grid__child u-12of12 u-4of12@lap">Delete</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

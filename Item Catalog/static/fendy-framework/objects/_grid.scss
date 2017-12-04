@@ -1,0 +1,232 @@
+/**
+ * ==============================================
+ * Grid
+ * ==============================================
+ *
+ * This file contains Fendys flex-based grid system.
+ *
+ * This grid can be used to create complex layouts on your website
+ * however, at the time of writting, CSS Grid has fairly good support
+ * among modern browsers so you may want to use that for laying out
+ * components and this grid to layout the insides of those components.
+ *
+ * This file contains the definition of the grid and it's children among
+ * with many modifiers to adapt the grid tou your desired layout however
+ * you need to use the width utilities for sizing the grid children.
+ *
+ * Use example:
+ *
+ * <div class="o-grid">
+ *  <div class="o-grid__child u-6of12"></div>
+ *  <div class="o-grid__child u-6of12"></div>
+ * </div>
+ *
+ * The above snippet will create a two equal-width columns layout assuming
+ * you opt to use a 12-column grid and use the quantity-of style instead of
+ * the fraction-like nomenclature for width utility (See utilities/widths).
+ *
+ * Most of the times you'll need to design responsive layouts. The widths
+ * utility includes BEMIT responsive suffixes to that puropose, here's
+ * an example:
+ *
+ * <div class="o-grid">
+ *  <div class="o-grid__child u-6of12 u-4of12@desktop"></div>
+ *  <div class="o-grid__child u-6of12 u-8of12@desktop"></div>
+ * </div>
+ *
+ * The above snippet will create a two equal-width columns layout at mobile
+ * devices-like width and ad desktop-like width it'll change to a 4 columns-
+ * width and an 8 columns-width layout assuming you opt to use the default
+ * breakpoint names (See utilities/responsive).
+ *
+ * CONTENTS:
+ * 1. Options
+ * 2. Container
+ * 3. Children
+ */
+
+/**
+* ==============================================
+* #OPTIONS
+* ==============================================
+*/
+
+$fendy-grid-base-child-alignment-at-axis: flex-start !default;
+
+$fendy-grid-base-child-alignment-at-cross-axis: flex-start !default;
+
+$fendy-grid-base-content-alignment-at-axis: flex-start !default;
+
+$fendy-grid-base-child-wrap: wrap !default;
+
+$fendy-grid-gutter: 12px !default; /* 6px on each side */
+
+$fendy-grid-use-gutter: true !default;
+
+
+
+
+
+/**
+ * ==============================================
+ * #CONTAINER
+ * ==============================================
+ */
+
+/**
+ * The base grid container object.
+ *
+ * By default the grid children are organized horizontally (row)
+ */
+.o-grid {
+  display: flex;
+  justify-content: $fendy-grid-base-child-alignment-at-axis;
+  align-items: $fendy-grid-base-child-alignment-at-cross-axis;
+  align-content: $fendy-grid-base-content-alignment-at-axis;
+  flex-flow: row $fendy-grid-base-child-wrap;
+
+  &.o-grid-reverse { flex-direction: row-reverse; }
+}
+
+
+
+
+
+/**
+ * A modification of the grid object.
+ *
+ * Sets the grid children organization to be vertical (column)
+ */
+.o-grid--vertical {
+  display: flex;
+  justify-content: $fendy-grid-base-child-alignment-at-axis;
+  align-items: $fendy-grid-base-child-alignment-at-cross-axis;
+  align-content: $fendy-grid-base-content-alignment-at-axis;
+  flex-flow: column $fendy-grid-base-child-wrap;
+
+  &.o-grid-reverse { flex-direction: column-reverse; }
+}
+
+
+
+
+
+/**
+ * Modifications for the alignment of children inside the grid container
+ * at containers axis.
+ *
+ * There is no actual block to modify here, the naming rather works as a
+ * <property-of-the-block>--<modifier>.
+ * Every possible value is included to take into account the possibility
+ * of having a different base option defined.
+ */
+.o-grid-axis-align--start { justify-content: flex-start; }
+.o-grid-axis-align--end { justify-content: flex-end; }
+.o-grid-axis-align--center { justify-content: center; }
+.o-grid-axis-align--between { justify-content: space-between; }
+.o-grid-axis-align--around { justify-content: space-around; }
+
+
+
+
+
+/**
+ * Modifications for the alignment of children inside the grid container
+ * at containers cross-axis.
+ *
+ * There is no actual block to modify here, the naming rather works as a
+ * <property-of-the-block>--<modifier>.
+ * Every possible value is included to take into account the possibility
+ * of having a different base option defined.
+ */
+.o-grid-cross-align--start { align-items: flex-start; }
+.o-grid-cross-align--end { align-items: flex-end; }
+.o-grid-cross-align--center { align-items: center; }
+.o-grid-cross-align--stretch { align-items: stretch; }
+.o-grid-cross-align--baseline { align-items: baseline; }
+
+
+
+
+
+/**
+ * Modifications for the alignment of content inside the grid container.
+ *
+ * There is no actual block to modify here, the naming rather works as a
+ * <property-of-the-block>--<modifier>.
+ * Every possible value is included to take into account the possibility
+ * of having a different base option defined.
+ */
+.o-grid-content-align--start { align-content: flex-start; }
+.o-grid-content-align--end { align-content: flex-end; }
+.o-grid-content-align--center { align-content: center; }
+.o-grid-content-align--stretch { align-content: stretch; }
+.o-grid-content-align--between { align-content: space-between; }
+.o-grid-content-align--around { align-content: space-around; }
+
+
+
+
+
+/**
+ * Modifications for the wrap of flex items.
+ * @type {[type]}
+ */
+.o-grid-wrap { flex-wrap: wrap; }
+.o-grid-wrap--no { flex-wrap: nowrap; }
+.o-grid-wrap--rev { flex-wrap: wrap-reverse; }
+
+
+
+
+
+/**
+ * ==============================================
+ * #CHILDREN
+ * ==============================================
+ */
+
+.o-grid__child {
+  flex: 0 1 auto;
+  @if $fendy-grid-use-gutter {
+    padding-left: $fendy-grid-gutter / 2;
+    padding-right: $fendy-grid-gutter / 2;
+  }
+}
+
+
+
+
+
+/**
+ * Defines a modification of the grid child element that adjust's it's size
+ * automatically to accupie the available space.
+ *
+ * Usefull when you need to give children the same size inside the grid.
+ * Works for horizontal (default) and vertical grids.
+ */
+.o-grid__child--auto {
+  flex: 1 1 auto;
+  @if $fendy-grid-use-gutter {
+    padding-left: $fendy-grid-gutter / 2;
+    padding-right: $fendy-grid-gutter / 2;
+  }
+}
+
+
+
+
+
+/**
+ * Modifications for the self alignment of grid children.
+ *
+ * There is no actual block to modify here, the naming rather works as a
+ * <property-of-the-block>--<modifier>.
+ * Every possible value is included to take into account the possibility
+ * of having a different base option defined.
+ */
+.o-grid-align-self--start { align-self: flex-start; }
+.o-grid-align-self--end { align-self: flex-end; }
+.o-grid-align-self--center { align-self: center; }
+.o-grid-align-self--baseline { align-self: baseline; }
+.o-grid-align-self--stretch { align-self: stretch; }
