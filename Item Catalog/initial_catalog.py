@@ -74,7 +74,7 @@ session.commit()
 Item4 = Item(
     name='Wild World',
     description='''
-        Wild World is Bastille’s sophomore album and follow up to 2013’s
+        Wild World is Bastille\'s sophomore album and follow up to 2013\'s
         Bad Blood.''',
     category_id=4, user_id=1)
 session.add(Item4)

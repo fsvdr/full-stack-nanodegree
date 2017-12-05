@@ -1,5 +1,12 @@
 from flask import (
-    Flask, render_template, request, redirect, jsonify, url_for, flash)
+    Flask,
+    render_template,
+    request,
+    redirect,
+    jsonify,
+    url_for,
+    flash
+)
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, Item, User
@@ -188,6 +195,7 @@ def doLogout():
 @app.route('/catalog/new', methods=['GET', 'POST'])
 def newCategoryItem():
     """Present new item form and handle submission"""
+    # Check for user authentication
     if 'username' not in login_session:
         return redirect(url_for('showCatalog', category_name='All'))
     if request.method == 'POST':
@@ -215,9 +223,19 @@ def newCategoryItem():
 @app.route('/catalog/<int:item_id>/edit', methods=['GET', 'POST'])
 def editCategoryItem(item_id):
     """Present edit item form and handle submission"""
+    # Check for user authentication
     if 'username' not in login_session:
         return redirect(url_for('showCatalog', category_name='All'))
+
     editedItem = session.query(Item).filter_by(id=item_id).one()
+
+    # Check for user authorization to modify the given item
+    if editedItem.user_id != getUserId(login_session.get('email')):
+        flash(
+            'Sorry, you are not authorized to modify the \'{}\' item'
+            .format(editedItem.name))
+        return redirect(url_for('showCatalog', category_name='All'))
+
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
@@ -245,9 +263,19 @@ def editCategoryItem(item_id):
 @app.route('/catalog/<int:item_id>/delete', methods=['GET', 'POST'])
 def deleteCategoryItem(item_id):
     """Present delete form and handle submission"""
+    # Check for user authentication
     if 'username' not in login_session:
         return redirect(url_for('showCatalog', category_name='All'))
+
     deleteItem = session.query(Item).filter_by(id=item_id).one()
+
+    # Check for user authorization to delete the given item
+    if deleteItem.user_id != getUserId(login_session.get('email')):
+        flash(
+            'Sorry, you are not authorized to delete the \'{}\' item'
+            .format(editedItem.name))
+        return redirect(url_for('showCatalog', category_name='All'))
+
     category = session.query(Category).filter_by(
         id=deleteItem.category_id).one()
 
