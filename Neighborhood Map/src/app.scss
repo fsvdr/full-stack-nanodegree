@@ -1,18 +1,1 @@
-html {
-  box-sizing: border-box;
-}
-
-/* stylelint-disable-next-line selector-max-universal */
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-body {
-  /* stylelint-disable-next-line */
-  font: normal 400 16px / 1.6 '-apple-system', 'system-ui', 'BlinkMacSystemFont', 'Segoe UI', 'Tahoma', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  color: rgba(0, 0, 0, 0.87);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-smoothing: antialiased; /* stylelint-disable-line */
-}
+@import './style/index';

@@ -4,11 +4,35 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
-const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssDev = [
+	'style-loader',
+	'css-loader',
+	{
+		loader: 'postcss-loader',
+		options: {
+			ident: 'postcss',
+	    plugins: (loader) => [
+	      require('autoprefixer')(),
+	      require('css-mqpacker')()
+	    ]
+		}
+	},
+	'sass-loader'
+];
 const cssProd = ExtractTextPlugin.extract({
   fallback: 'style-loader',
   use: [
     {loader: 'css-loader'},
+		{
+			loader: 'postcss-loader',
+			options: {
+				ident: 'postcss',
+		    plugins: (loader) => [
+		      require('autoprefixer')(),
+		      require('css-mqpacker')()
+		    ]
+			}
+		},
     {loader: 'sass-loader'}
   ]
 });
