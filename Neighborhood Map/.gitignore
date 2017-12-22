@@ -1,0 +1,7 @@
+# Ignore configuration files
+conf.json
+
+# Node
+node_modules/
+
+# SASS
