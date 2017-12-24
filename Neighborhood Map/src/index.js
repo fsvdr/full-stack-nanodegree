@@ -5,7 +5,13 @@ let map;
 function initMap() {
 	map = new google.maps.Map(document.querySelector('.c-gmap'), {
 		center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    zoom: 8,
+		mapTypeControl: false,
+		scaleControl: false,
+		rotateControl: false,
+		fullscreenControl: false,
+		streetViewControl: false,
+		zoomControl: false
   });
 }
 

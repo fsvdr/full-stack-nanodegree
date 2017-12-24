@@ -2,9 +2,9 @@
 <html>
 	<head>
     	<meta charset="utf-8">
-    	<title><%= htmlWebpackPlugin.options.title %></title>
+    	<title>Neighborhood</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	</head>
+  	<link href="styles.bundle.css?8dcf7ec32ec4f2253fe0" rel="stylesheet"></head>
   	<body class="c-app [ o-grid--vertical o-grid-wrap--no ]">
     	<div class="c-gmap"></div>
 
@@ -19,7 +19,7 @@
 
 		<div class="c-app__body [ o-grid__child--auto u-12of12 ] [ o-grid o-grid--wrap--no ]">
 			<!-- Control Center -->
-			<div class="c-app__control is-active [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
+			<div class="c-app__control [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
 				<div class="c-filter-field [ o-grid__child ]">
 					<input type="text" name="filterBy" class="o-input-field" placeholder="Filter By"><button class="o-button"><i class="o-icon o-icon-filter"></i></button>
 				</div>
@@ -82,7 +82,7 @@
 			</div>
 
 			<!-- Matrix View -->
-			<div class="c-app__matrix [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
+			<div class="c-app__matrix is-active [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
 				<div class="c-detail-cards">
 					<button class="c-detail-cards__toggler"><i class="o-icon o-icon-arrow-open"></i></button>
 					<div class="c-card [ o-grid--vertical o-grid--wrap--no ]">
@@ -92,8 +92,8 @@
 							<address class="o-stop-address">Snorrabraut 56, 101 Reykjavík</address>
 						</div>
 						<div class="c-card__body [ o-grid__child--auto ]">
-							<img src=<%= require('./assets/images/loader.svg') %> alt="" class="o-stop-photo">
-							<span class="o-status-indicator">Verifying connection...</span>
+							<img src=assets/images/db5f3291.svg alt="" class="o-stop-photo">
+
 						</div>
 					</div>
 				</div>
@@ -105,6 +105,6 @@
 		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
 
 		<!-- This loads the API -->
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=htmlWebpackPlugin.options.APIKEY%>&v=3&callback=initMap"></script>
-  	</body>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQDwkLEx5cH0-0a4T1hWkfuDqpWfIDj7o&v=3&callback=initMap"></script>
+  	<script type="text/javascript" src="scripts.bundle.js?8dcf7ec32ec4f2253fe0"></script></body>
 </html>

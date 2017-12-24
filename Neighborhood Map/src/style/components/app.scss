@@ -1,0 +1,63 @@
+.o-app-logo {
+  font-family: $font-montserrat;
+  color: get-color('white');
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: calc-em(24px);
+}
+
+
+.c-app {
+  width: 100vw;
+  height: 100vh;
+  background-color: get-color('dark-blue');
+
+  &::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 18%;
+    z-index: 5;
+    /* stylelint-disable-next-line max-line-length */
+    background-image: linear-gradient(130deg, get-color('dark-blue') 0%, rgba(0, 0, 0, 0) 100%);
+    @include respond-to('lap') {
+      width: 25%;
+      height: 100%;
+    }
+  }
+}
+
+.c-app__header {
+  padding: 1rem;
+  z-index: 10;
+
+  .o-back-btn {
+    position: relative;
+    top: -3px;
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    transition: all 0.2s;
+
+    &.is-visible {
+      display: inline-block;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .o-status-indicator {
+    margin-top: 0.5rem;
+    font-size: calc-em(12px);
+    font-weight: 600;
+    color: get-color('white');
+
+    &.has-succeeded { color: get-color('green'); }
+    &.has-failed { color: get-color('error'); }
+  }
+}
+
+.c-app__body {
+  overflow: hidden;
+}

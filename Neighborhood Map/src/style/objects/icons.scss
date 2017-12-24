@@ -1,0 +1,43 @@
+.o-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.o-icon-marker-white {
+  background: url('./assets/icons/marker-white.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-marker-green {
+  background: url('./assets/icons/marker-green.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-marker-red {
+  background: url('./assets/icons/marker-red.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-filter {
+  background: url('./assets/icons/filter.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-arrow-back {
+  background: url('./assets/icons/arrow-back.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-arrow-open {
+  background: url('./assets/icons/arrow-open.svg') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+.o-icon-arrow-close {
+  background: url('./assets/icons/arrow-close.svg') 50% 50% no-repeat;
+  background-size: contain;
+}

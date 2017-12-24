@@ -1,1 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800');
+
+$font-montserrat: 'Montserrat', sans-serif;
+
+$color-scheme: (
+  'true-black': #000000,
+  'darker-black': rgba(0, 0, 0, 0.87),
+  'regular-black': rgba(0, 0, 0, 0.54),
+  'lighter-black': rgba(0, 0, 0, 0.38),
+  'true-white': #FFFFFF,
+  'regular-white': rgba(255, 255, 255, 0.7),
+  'lighter-white': rgba(255, 255, 255, 0.5),
+  'blue': #0069FF,
+  'green': #36D385,
+  'red': #E10E5E,
+  'dark-blue': #1E212E,
+  'darker-blue': #0F1015
+);
+
+$font-families: (
+  'default': $font-montserrat,
+);
+
 @import './fendy-framework/main';
+@import
+  './objects/icons';
+@import
+  './components/app',
+  './components/map',
+  './components/control-center',
+  './components/location-matrix';
