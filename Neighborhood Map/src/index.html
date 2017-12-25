@@ -11,80 +11,35 @@
 		<header class="c-app__header [ o-grid__child u-12of12 u-3of12@lap ]">
 			<button class="o-back-btn"><i class="o-icon o-icon-arrow-back"></i></button>
 			<span class="o-app-logo">Cover Stops</span>
-			<div class="o-status-indicator">
-				<i class="o-icon o-icon-marker-white"></i>
-				<span>Connection Established</span>
+			<div class="o-status-indicator" data-bind="css: {'has-succeeded': connectionStatusCode() === 1, 'has-failed': connectionStatusCode() === 2}">
+				<i class="o-icon o-icon-marker-white" data-bind="css: {'o-icon-marker-white': connectionStatusCode() === 0, 'o-icon-marker-green': connectionStatusCode() === 1, 'o-icon-marker-red': connectionStatusCode() === 2}"></i>
+				<span data-bind="text: connectionStatusCode() === 0 ? 'Verifying Connection' : connectionStatusCode() === 1 ? 'Connection Established' : 'Compromised Connection'"></span>
 			</div>
 		</header>
 
 		<div class="c-app__body [ o-grid__child--auto u-12of12 ] [ o-grid o-grid--wrap--no ]">
 			<!-- Control Center -->
-			<div class="c-app__control is-active [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
+			<div class="c-app__control [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': isUserAtControlCenter}">
 				<div class="c-filter-field [ o-grid__child ]">
 					<input type="text" name="filterBy" class="o-input-field" placeholder="Filter By"><button class="o-button"><i class="o-icon o-icon-filter"></i></button>
 				</div>
 
-				<div class="c-stops-list [ o-grid__child--auto ]">
+				<div class="c-stops-list [ o-grid__child--auto ]" data-bind="foreach: stops">
 					<div class="c-stop">
 						<img src="" alt="" class="c-stop__imagery">
 						<div class="c-stop__intel">
-							<span class="o-stop-category--restaurant">Restaurant</span>
-							<h2 class="o-stop-name">Roadhouse</h2>
-							<address class="o-stop-address">Snorrabraut 56, 101 Reykjavík</address>
-						</div>
-					</div>
-
-					<div class="c-stop">
-						<img src="" alt="" class="c-stop__imagery">
-						<div class="c-stop__intel">
-							<span class="o-stop-category--outside">Waterfall</span>
-							<h2 class="o-stop-name">Selfos</h2>
-							<address class="o-stop-address">Dettifoss Rd</address>
-						</div>
-					</div>
-
-					<div class="c-stop">
-						<img src="" alt="" class="c-stop__imagery">
-						<div class="c-stop__intel">
-							<span class="o-stop-category--restaurant">Restaurant</span>
-							<h2 class="o-stop-name">Roadhouse</h2>
-							<address class="o-stop-address">Snorrabraut 56, 101 Reykjavík</address>
-						</div>
-					</div>
-
-					<div class="c-stop">
-						<img src="" alt="" class="c-stop__imagery">
-						<div class="c-stop__intel">
-							<span class="o-stop-category--outside">Waterfall</span>
-							<h2 class="o-stop-name">Selfos</h2>
-							<address class="o-stop-address">Dettifoss Rd</address>
-						</div>
-					</div>
-
-					<div class="c-stop">
-						<img src="" alt="" class="c-stop__imagery">
-						<div class="c-stop__intel">
-							<span class="o-stop-category--restaurant">Restaurant</span>
-							<h2 class="o-stop-name">Roadhouse</h2>
-							<address class="o-stop-address">Snorrabraut 56, 101 Reykjavík</address>
-						</div>
-					</div>
-
-					<div class="c-stop">
-						<img src="" alt="" class="c-stop__imagery">
-						<div class="c-stop__intel">
-							<span class="o-stop-category--outside">Waterfall</span>
-							<h2 class="o-stop-name">Selfos</h2>
-							<address class="o-stop-address">Dettifoss Rd</address>
+							<span data-bind="text: category, css: {'o-stop-category--restaurant': category === 'Restaurant', 'o-stop-category--outdoors': category === 'Outdoors', 'o-stop-category': category !== 'Restaurant' && category !== 'Outdoors'}"></span>
+							<h2 class="o-stop-name" data-bind="text: title"></h2>
+							<address class="o-stop-address" data-bind="text: address"></address>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<!-- Matrix View -->
-			<div class="c-app__matrix [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]">
+			<div class="c-app__matrix [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': !isUserAtControlCenter, 'is-open': isIntelOpen}">
 				<div class="c-detail-cards">
-					<button class="c-detail-cards__toggler"><i class="o-icon o-icon-arrow-open"></i></button>
+					<button class="c-detail-cards__toggler" data-bind="click: toggleIntel"><i class="o-icon" data-bind="css: {'o-icon-arrow-open': isIntelOpen() === false, 'o-icon-arrow-close': isIntelOpen()}"></i></button>
 					<div class="c-card [ o-grid--vertical o-grid--wrap--no ]">
 						<div class="c-card__header [ o-grid__child ]">
 							<span class="o-stop-category--restaurant">Restaurant</span>
