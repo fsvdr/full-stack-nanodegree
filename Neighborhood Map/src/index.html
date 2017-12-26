@@ -19,9 +19,9 @@
 
 		<div class="c-app__body [ o-grid__child--auto u-12of12 ] [ o-grid o-grid--wrap--no ]">
 			<!-- Control Center -->
-			<div class="c-app__control [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': isUserAtControlCenter}">
+			<div class="c-app__control [ o-grid__child u-12of12 u-3of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': isUserAtControlCenter()}">
 				<div class="c-filter-field [ o-grid__child ]">
-					<input type="text" name="filterBy" class="o-input-field" placeholder="Filter By"><button class="o-button"><i class="o-icon o-icon-filter"></i></button>
+					<input type="text" name="filterBy" class="o-input-field js-filter" placeholder="Filter By"><button class="o-button js-filter-btn" data-bind="click: filterStops()"><i class="o-icon o-icon-filter"></i></button>
 				</div>
 
 				<div class="c-stops-list [ o-grid__child--auto ]" data-bind="foreach: stops">
@@ -37,7 +37,7 @@
 			</div>
 
 			<!-- Matrix View -->
-			<div class="c-app__matrix [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': !isUserAtControlCenter, 'is-open': isIntelOpen}">
+			<div class="c-app__matrix [ o-grid__child u-12of12 u-9of12@lap ] [ o-grid--vertical o-grid-wrap--no ]" data-bind="css: {'is-active': !isUserAtControlCenter(), 'is-open': isIntelOpen()}">
 				<div class="c-detail-cards">
 					<button class="c-detail-cards__toggler" data-bind="click: toggleIntel"><i class="o-icon" data-bind="css: {'o-icon-arrow-open': isIntelOpen() === false, 'o-icon-arrow-close': isIntelOpen()}"></i></button>
 					<div class="c-card [ o-grid--vertical o-grid--wrap--no ]">
