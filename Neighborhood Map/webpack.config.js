@@ -94,7 +94,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Neighborhood',
-			APIKEY: conf['API_KEY'],
+			APIKEY: conf['GMAP_API_KEY'],
       hash: true,
       template: './src/index.html'
     }),

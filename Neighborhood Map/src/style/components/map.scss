@@ -6,3 +6,31 @@
   left: 0;
   z-index: 0;
 }
+
+.o-gmarker-title {
+  font-size: calc-em(22px);
+  font-family: $font-montserrat;
+  margin: 1rem 0;
+}
+
+.o-gmarker-link {
+  display: block;
+  font-style: italic;
+  text-decoration: underline;
+
+  &:hover { color: get-color('green'); }
+}
+
+.o-gmarker-description {
+  font-size: calc-em(14px);
+  max-width: 200px;
+  color: get-color('lighter-black');
+  margin: 1rem 0;
+}
+
+.o-gmarker-details {
+  display: block;
+  font-size: calc-em(14px);
+  color: get-color('green');
+  font-weight: 600;
+}

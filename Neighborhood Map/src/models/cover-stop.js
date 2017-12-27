@@ -3,6 +3,14 @@ export default class CoverStop {
 		this.title = title;
 		this.category = category;
 		this.address = address;
+		this.location = {};
+		this.marker = null;
+		this.photos = [];
+		this.stories = [];
+		this.description = "";
+		this.url = "";
+		this.phone = "";
+		this.hereNow = "";
 	}
 
 	setLocation(location) {
@@ -21,7 +29,27 @@ export default class CoverStop {
 		this.marker.setMap(null);
 	}
 
-	setPhoto(url) {
-		this.photo = url;
+	setPhotos(urls) {
+		this.photos = urls;
+	}
+
+	setStories(stories) {
+		this.stories = stories;
+	}
+
+	setDescription(description) {
+		this.description = description;
+	}
+
+	setUrl(url) {
+		this.url = url;
+	}
+
+	setPhone(phone) {
+		this.phone = phone
+	}
+
+	setHereNow(summary) {
+		this.hereNow = summary;
 	}
 }

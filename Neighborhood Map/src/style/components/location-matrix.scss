@@ -70,8 +70,7 @@
     min-height: 100%;
     height: auto;
     background-color: get-color('white');
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem 2rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.24);
@@ -132,8 +131,13 @@
   }
 }
 
+.c-card__header {
+  padding-top: 1rem;
+}
+
 .c-card__body {
   width: 100%;
+  max-height: 40vh;
   height: 100%;
   overflow: hidden;
   overflow-y: scroll;
@@ -141,9 +145,32 @@
 
   .o-stop-photo {
     display: block;
-    width: 90%;
-    max-width: 450px;
-    margin: 4rem auto 2rem;
+    width: 80%;
+    max-width: 120px;
+    margin: 6rem auto 2rem;
+    object-fit: cover;
+  }
+
+  .c-photo-gallery {
+    overflow: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    text-align: center;
+
+    .o-stop-photo {
+      display: inline-block;
+      max-width: none;
+      width: auto;
+      height: 200px;
+      margin: 0 auto 2rem;
+      object-fit: cover;
+    }
+  }
+
+  .o-cover-story-title {
+    font-weight: 600;
+    font-size: calc-em(14px);
+    margin-bottom: 1rem;
   }
 
   .o-status-indicator {
@@ -151,5 +178,17 @@
     font-weight: 600;
     color: get-color('lighter-black');
     text-align: center;
+  }
+}
+
+.o-stop-story {
+  padding: 0 1rem;
+
+  .o-stop-story__text {
+    font-size: calc-em(12px);
+    color: get-color('lighter-black');
+    margin-bottom: 2rem;
+
+    &:hover { color: get-color('black'); }
   }
 }

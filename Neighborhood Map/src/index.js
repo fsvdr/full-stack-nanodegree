@@ -1,8 +1,11 @@
 import url from './app.scss';
 import stops from './collections/cover-stops';
 import { GMapUtilities } from './utils/gmap-utilities';
+import { FourSquareUtilities } from './utils/foursquare-utilities';
 
 let map;
+let infoWindow;
+let placesService;
 
 /**
  * Google Map initialization callback
@@ -24,14 +27,15 @@ function initMap() {
 		}
 	});
 
-	// Initialize map info window, bounds and geocoder objects
-	const infoWindow = new google.maps.InfoWindow();
+	// Initialize map info window, bounds, geocoder and places objects
+	infoWindow = new google.maps.InfoWindow();
 	const bounds = new google.maps.LatLngBounds();
 	const geocoder = new google.maps.Geocoder();
+	placesService = new google.maps.places.PlacesService(map);
 
 	// Use geocoder to get each stop's coordinates and set marker on map
 	stops.forEach((stop) => {
-		GMapUtilities.initMarker(stop, map, geocoder, bounds);
+		GMapUtilities.initMarker(stop, map, geocoder, bounds, infoWindow, placesService);
 	});
 }
 
@@ -43,10 +47,11 @@ function initMap() {
  */
 function ViewModel () {
 	this.connectionStatusCode = ko.observable(1); // 0 - Connecting, 1 - Established, 2 - Compromised
-	this.isUserAtControlCenter = ko.observable(false);
+	this.isUserAtControlCenter = ko.observable(true);
 	this.isIntelOpen = ko.observable(false);
 	this.query = ko.observable('');
 	this.filterInput = document.querySelector('.js-filter');
+	this.selectedStop = ko.observable(null);
 
 	// Computed value of filtered cover stops.
 	this.stops = ko.computed(() => {
@@ -82,10 +87,40 @@ function ViewModel () {
 		this.query(this.filterInput.value);
 	}
 
+	this.openControlCenter = () => {
+		this.isUserAtControlCenter(true);
+	}
+
+	this.informCompromisedConnection = () => {
+		this.connectionStatusCode(2);
+	}
+
+	this.selectStop = (selection) => {
+		const stop = stops.find((s) => s.title === selection.title);
+
+		// Inform UI that a request will begin
+		this.connectionStatusCode(0);
+
+		GMapUtilities.getStopDetails(stop, placesService, () => {
+			// Mission Details can already be populated, no need to wait for
+			// FourSquare data
+			this.selectedStop(stop);
+
+			// Fetch FourSquare data that will populate the infoWindow
+			FourSquareUtilities.getPlaceDetails(stop, () => {
+				GMapUtilities.populateInfoWindow(stop.marker, stop, infoWindow, map);
+
+				// Once everything's done, inform UI that everything is ok
+				this.connectionStatusCode(1);
+				this.isUserAtControlCenter(false);
+			}, this.informCompromisedConnection);
+		}, this.informCompromisedConnection);
+	}
+
 	this.toggleIntel = () => {
-			const prev = this.isIntelOpen();
-			this.isIntelOpen(!prev);
-		}
+		const prev = this.isIntelOpen();
+		this.isIntelOpen(!prev);
+	}
 }
 
 // Get `initMap` to the global scope so that it's accessible to the

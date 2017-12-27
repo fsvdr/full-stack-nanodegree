@@ -44,6 +44,11 @@
       display: inline-block;
       visibility: visible;
       opacity: 1;
+      @include respond-to('lap') {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+      }
     }
   }
 
