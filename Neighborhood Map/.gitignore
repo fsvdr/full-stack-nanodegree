@@ -4,4 +4,4 @@ conf.json
 # Node
 node_modules/
 
-# SASS
+./src/config.js

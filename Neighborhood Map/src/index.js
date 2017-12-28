@@ -1,41 +1,22 @@
 import url from './app.scss';
 import stops from './collections/cover-stops';
-import { GMapUtilities } from './utils/gmap-utilities';
-import { FourSquareUtilities } from './utils/foursquare-utilities';
+import GoogleMap from './utils/gmap-interface';
+import FourSquareClient from './utils/foursquare-interface';
 
 let map;
-let infoWindow;
-let placesService;
+let foursquare;
 
 /**
  * Google Map initialization callback
- * @return null
  */
 function initMap() {
-	// Initialize map and save for reference
-	map = new google.maps.Map(document.querySelector('.c-gmap'), {
-		center: {lat: 64.500586, lng: -21.362976},
-		zoom: 7,
-		mapTypeControl: false,
-		scaleControl: false,
-		rotateControl: false,
-		fullscreenControl: false,
-		streetViewControl: false,
-		zoomControl: true,
-		zoomControlOptions: {
-			position: google.maps.ControlPosition.TOP_RIGHT
-		}
-	});
+	// Initialize API interfaces and save for reference
+	map = new GoogleMap('.c-gmap', (msg) => console.log(msg));
+	foursquare = new FourSquareClient((msg) => console.log(msg));
 
-	// Initialize map info window, bounds, geocoder and places objects
-	infoWindow = new google.maps.InfoWindow();
-	const bounds = new google.maps.LatLngBounds();
-	const geocoder = new google.maps.Geocoder();
-	placesService = new google.maps.places.PlacesService(map);
-
-	// Use geocoder to get each stop's coordinates and set marker on map
-	stops.forEach((stop) => {
-		GMapUtilities.initMarker(stop, map, geocoder, bounds, infoWindow, placesService);
+	map.initMarkers(stops, () =>{
+		// Apply Knockout bindings to app
+		ko.applyBindings(new ViewModel());
 	});
 }
 
@@ -43,7 +24,6 @@ function initMap() {
 /**
  * ViewModel definition
  * This is the * in MV* which handles the communication betwen model and view
- * @constructor
  */
 function ViewModel () {
 	this.connectionStatusCode = ko.observable(1); // 0 - Connecting, 1 - Established, 2 - Compromised
@@ -53,70 +33,45 @@ function ViewModel () {
 	this.filterInput = document.querySelector('.js-filter');
 	this.selectedStop = ko.observable(null);
 
-	// Computed value of filtered cover stops.
+	// Computed stops based on the filter query
 	this.stops = ko.computed(() => {
 		const query = this.query().toLowerCase().trim();
-
-		if (query !== '') {
-			// Return matches and display the markers
-			const filteredStops =  stops.filter((s) => {
-				// Match query by stop title, category or address
-				if (s.title.toLowerCase().includes(query) || s.category.toLowerCase().includes(query) || s.address.toLowerCase().includes(query)) {
-					if (s.marker) s.showMarkerIn(map);
-					return true;
-				} else {
-					if (s.marker) s.hideMarker();
-					return false;
-				}
-			});
-
-			return filteredStops;
-
-		} else {
-			// Return and show all stops
-			stops.forEach((s) => {
-				if (s.marker) s.showMarkerIn(map);
-			});
-
-			return stops;
-		}
+		return map.filterPlaces(query, stops);
 	});
 
-
+	// Updates the query observable
 	this.filterStops = () => {
 		this.query(this.filterInput.value);
 	}
 
+	// Handles view change for movile devices
 	this.openControlCenter = () => {
 		this.isUserAtControlCenter(true);
 	}
 
+	// Informs UI that something went wrong
 	this.informCompromisedConnection = () => {
 		this.connectionStatusCode(2);
 	}
 
+	// Changes currently viewing stop
 	this.selectStop = (selection) => {
 		const stop = stops.find((s) => s.title === selection.title);
 
-		// Inform UI that a request will begin
 		this.connectionStatusCode(0);
 
-		GMapUtilities.getStopDetails(stop, placesService, () => {
-			// Mission Details can already be populated, no need to wait for
-			// FourSquare data
-			this.selectedStop(stop);
+		foursquare.getVenueDetails(stop)
+			.then(() => {
+				this.selectedStop(stop);
+				map.populateInfoWindow(stop);
 
-			// Fetch FourSquare data that will populate the infoWindow
-			FourSquareUtilities.getPlaceDetails(stop, () => {
-				GMapUtilities.populateInfoWindow(stop.marker, stop, infoWindow, map);
-
-				// Once everything's done, inform UI that everything is ok
 				this.connectionStatusCode(1);
 				this.isUserAtControlCenter(false);
-			}, this.informCompromisedConnection);
-		}, this.informCompromisedConnection);
+			})
+			.catch((error) => this.informCompromisedConnection());
 	}
 
+	// Opens the stop intel
 	this.toggleIntel = () => {
 		const prev = this.isIntelOpen();
 		this.isIntelOpen(!prev);
@@ -126,6 +81,3 @@ function ViewModel () {
 // Get `initMap` to the global scope so that it's accessible to the
 // Google Maps API script
 window.initMap = initMap;
-
-// Apply Knockout bindings to app
-ko.applyBindings(new ViewModel());
