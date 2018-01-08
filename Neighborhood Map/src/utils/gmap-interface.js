@@ -47,21 +47,22 @@ class GoogleMap {
 
 		// Wait for all place's locations to be geocoded before
 		// obtaining their details
-		Promise.all(pendingRequests).then(() => {
-			pendingRequests = [];
-			places.forEach((p) => pendingRequests.push(this.obtainDetails(p)));
-
-			// Wait for all markers to be rendered to declare this done
-			Promise.all(pendingRequests).then(() => {
-				callback()
+		Promise.all(pendingRequests)
+			.then(() => {
+				callback();
+			})
+			.catch((error) => {
+				this.reportErrorOccurrence('Something went wrong while geocoding.');
+				callback();
 			});
-		});
 	}
 
 	/**
 	 * Handles place location geocoding.
 	 *
-	 * Resolves once place has been set with the location requested
+	 * Resolves once place has been set with the location requested,
+	 * the marker has been created and placed and the map bounds have been
+	 *  adjusted to the marker's position
 	 * @access private
 	 * @param  {CoverStop} place Representation of the cover stop
 	 * @return {Promise}       Promise for the geocode request
@@ -72,6 +73,24 @@ class GoogleMap {
 				if (status == google.maps.GeocoderStatus.OK) {
 					const location = results[0].geometry.location;
 					place.setLocation({lat: location.lat(), lng: location.lng()});
+
+					const marker = new google.maps.Marker({
+						map: this.mapmap,
+						position: place.location,
+						title: place.title,
+					});
+
+					marker.addListener('click', () => {
+						this.populateInfoWindow(place);
+					});
+					// Place marker in map since all relevant information is
+					// now available
+					place.setMarker(marker);
+					place.showMarkerIn(this.map);
+
+					this.bounds.extend(place.location);
+					this.map.fitBounds(this.bounds);
+
 					resolve();
 				} else {
 					this.reportErrorOccurrence('Geocoding Request Failed');
@@ -93,8 +112,8 @@ class GoogleMap {
 		// In order to get the place details, we first need to find
 		// the place's id
 		return new Promise((resolve, reject) => {
-			this.getPlaceId(place).then((place) => {
-				this.placesService.getDetails({placeId: place.marker.id}, (results, status) => {
+			this.getPlaceId(place).then((id) => {
+				this.placesService.getDetails({placeId: id}, (results, status) => {
 					if (status === google.maps.places.PlacesServiceStatus.OK) {
 						const reviews = results.reviews.slice(0, 3).map((r) => r.text);
 						const photos = results.photos.slice(0, 3).map((p) => p.getUrl({maxHeight: 400, maxWidth: 600}));
@@ -103,7 +122,7 @@ class GoogleMap {
 						place.setPhotos(photos);
 						resolve();
 					} else {
-						this.reportErrorOccurrence('Place Details Request Failed');
+						this.reportErrorOccurrence(`Place Details Request Failed with status: ${status}`);
 						reject();
 					}
 				});
@@ -114,9 +133,7 @@ class GoogleMap {
 	/**
 	 * Handles place search request
 	 *
-	 * Resolves once the place id has been found, the marker has been
-	 * created and placed and the map bounds have been adjusted to the
-	 * marker's position
+	 * Resolves once the place id has been found
 	 * @access private
 	 * @param  {CoverStop} place Representation of the cover stop
 	 * @return {Promise}       Promise for the place search request
@@ -130,29 +147,9 @@ class GoogleMap {
 				{query: place.title, location: place.location},
 				(results, status) => {
 					if (status == google.maps.places.PlacesServiceStatus.OK) {
-						const marker = new google.maps.Marker({
-							map: this.mapmap,
-							position: place.location,
-							title: place.title,
-							animation: google.maps.Animation.DROP,
-							id: results[0].place_id
-						});
-
-						marker.addListener('click', () => {
-							this.populateInfoWindow(place);
-						});
-
-						// Place marker in map since all relevant information is
-						// now available
-						place.setMarker(marker);
-						place.showMarkerIn(this.map);
-
-						this.bounds.extend(place.location);
-						this.map.fitBounds(this.bounds);
-
-						resolve(place);
+						resolve(results[0].place_id);
 					} else {
-						this.reportErrorOccurrence('Place Search Request Failed');
+						this.reportErrorOccurrence(`Place Search Request Failed with status: ${status}`);
 						reject();
 					}
 				}
@@ -196,7 +193,7 @@ class GoogleMap {
 	 */
 	bounceMarker(marker) {
 		marker.setAnimation(google.maps.Animation.BOUNCE);
-		setTimeout(() => marker.setAnimation(null), 5000);
+		setTimeout(() => marker.setAnimation(null), 2100);
 	}
 
 	/**
