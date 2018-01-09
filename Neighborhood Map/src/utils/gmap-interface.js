@@ -38,12 +38,13 @@ class GoogleMap {
 	 * placed.
 	 * @access public
 	 * @param  {Array}   places   Array of the places to create markers for
+	 * @param  {Function} onMarkerClick Callback for click event on marker
 	 * @param  {Function} callback Completion callback
 	 */
-	initMarkers(places, callback) {
+	initMarkers(places, onMarkerClick, callback) {
 		// Geocode places location
 		let pendingRequests = [];
-		places.forEach((p) => pendingRequests.push(this.geocode(p)));
+		places.forEach((p) => pendingRequests.push(this.geocode(p, onMarkerClick)));
 
 		// Wait for all place's locations to be geocoded before
 		// obtaining their details
@@ -65,9 +66,10 @@ class GoogleMap {
 	 *  adjusted to the marker's position
 	 * @access private
 	 * @param  {CoverStop} place Representation of the cover stop
+	 * @param  {Function} onMarkerClick Callback for click event on marker
 	 * @return {Promise}       Promise for the geocode request
 	 */
-	geocode(place) {
+	geocode(place, onMarkerClick) {
 		return new Promise((resolve, reject) => {
 			this.geocoder.geocode({address: place.address}, (results, status) => {
 				if (status == google.maps.GeocoderStatus.OK) {
@@ -81,7 +83,7 @@ class GoogleMap {
 					});
 
 					marker.addListener('click', () => {
-						this.populateInfoWindow(place);
+						onMarkerClick(marker);
 					});
 					// Place marker in map since all relevant information is
 					// now available
@@ -180,6 +182,8 @@ class GoogleMap {
 
 			this.infoWindow.open(this.map, place.marker);
 
+			this.map.panTo(place.marker.getPosition());
+
 			// Make sure the marker property is cleared if the infowindow is closed
 			this.infoWindow.addListener('closeclick', () => {
 				this.infoWindow.setMarker = null;
@@ -215,7 +219,7 @@ class GoogleMap {
 
 				// Match query by place title, category or address
 				if (title.includes(query) || category.includes(query) || address.includes(query)) {
-					if (p.marker) p.showMarkerIn(this.map);
+					if (p.marker) p.showMarker();
 					return true;
 				} else {
 					// Hide non-matching places
@@ -224,7 +228,7 @@ class GoogleMap {
 				}
 			});
 		} else {
-			places.forEach((p) => p.showMarkerIn(this.map));
+			places.forEach((p) => p.showMarker());
 			return places;
 		}
 	}

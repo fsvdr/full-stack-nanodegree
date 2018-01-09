@@ -25,8 +25,12 @@ export default class CoverStop {
 		this.marker.setMap(map);
 	}
 
+	showMarker() {
+		this.marker.setVisible(true);
+	}
+
 	hideMarker() {
-		this.marker.setMap(null);
+		this.marker.setVisible(false);
 	}
 
 	setPhotos(urls) {

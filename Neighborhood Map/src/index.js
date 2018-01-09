@@ -19,10 +19,10 @@ function ViewModel () {
 	this.query = ko.observable('');
 	this.selectedStop = ko.observable(null);
 	// Computed stops based on the filter query
-	this.stops = ko.computed(() => {
+	this.stops = function () {
 		const query = this.query().toLowerCase().trim();
 		return map.filterPlaces(query, stops);
-	});
+	};
 
 
 	// Handles view change for movile devices
@@ -77,8 +77,8 @@ function initMap() {
 		informCompromisedConnection();
 	});
 
-	map.initMarkers(stops, () =>{
-		vm = new ViewModel();
+	vm = new ViewModel();
+	map.initMarkers(stops, vm.selectStop, () =>{
 		// Apply Knockout bindings to app
 		ko.applyBindings(vm);
 	});
