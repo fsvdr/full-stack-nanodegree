@@ -11,6 +11,8 @@ In order to use this project you need to have **Node** and **npm** installed in 
 
 The application uses the [Google Maps API](https://developers.google.com/maps) to display a map and get some details on the cover stops. The application also uses the [FourSquare API](https://developer.foursquare.com/) to obtain further details on the stops.
 
+You'll need to get a Google Maps **API Key** as well as a **Client ID** and **Client Secret** from the FourSquare API and place those in the `src/config.js` for the application to work;
+
 ## Installation
  1. Clone or download the project folder into your system.
  2. Run `npm install` to download the project dependencies.
